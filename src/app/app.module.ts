@@ -10,9 +10,12 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
+  MatToolbarModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { TeamListComponent } from './team-list/team-list.component';
+import { DivisionListComponent } from './division-list/division-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     HomeComponent,
     RegisterComponent,
+    TeamListComponent,
+    DivisionListComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatToolbarModule,
     ReactiveFormsModule,
   ],
   providers: [],
