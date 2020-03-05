@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,21 @@ export class LoginComponent implements OnInit {
   private username = new FormControl('')
   private password = new FormControl('')
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+  ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   login() {
     this.userService.login(this.username.value, this.password.value)
       .then(username => {
         console.info(`Successfully logged in ${username}.`)
+        this.router.navigate(['/home'])
       }, error => {
-        console.error("Could not login.")
+        console.error("Could not login.", error)
+        this.password.setValue('')
       })
   }
 
