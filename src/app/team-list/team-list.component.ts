@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'app-team-list',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamListComponent implements OnInit {
 
-  constructor() { }
+  private teams = []
+
+  constructor(private teamService: TeamService) { }
 
   ngOnInit() {
+    this.teamService.getTeams()
+      .then(teams => {
+        this.teams = teams
+      })
+      .catch(reason => {
+        console.error(reason)
+      })
   }
 
 }
