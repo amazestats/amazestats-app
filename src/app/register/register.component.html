@@ -5,10 +5,11 @@
 
 <mat-form-field appearance="fill">
   <mat-label>Password</mat-label>
-  <input matInput [type]="password" autocomplete="current-password"
+  <input matInput autocomplete="new-password" [type]="password"
     [formControl]="password" />
 </mat-form-field>
 
-<button mat-raised-button (click)="login()" color="primary">Login</button>
-<p>Not a member? <a mat-button routerLink="/register"
-    color="accent">Register</a></p>
+<button mat-raised-button (click)="register()" color="primary">Register</button>
+
+<p>Already registered? <a mat-button routerLink="/login"
+    color="accent">Login</a></p>

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         console.info(`Successfully logged in ${username}.`)
         this.router.navigate(['/home'])
       }, error => {
-        console.error("Could not login.", error)
+        console.error('Could not login.', error)
         this.password.setValue('')
       })
   }

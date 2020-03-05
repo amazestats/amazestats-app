@@ -13,6 +13,11 @@ export class UserService {
     return Promise.resolve(username)
   }
 
+  register(username: string, password: string): Promise<string> {
+    this.username = username
+    return Promise.resolve(username)
+  }
+
   getCurrentUser(): string {
     return this.username
   }

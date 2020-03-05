@@ -12,12 +12,14 @@ import {
   MatInputModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
