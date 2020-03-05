@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { DivisionListComponent } from './division-list/division-list.component';
+import { DivisionComponent } from './division/division.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DivisionListComponent } from './division-list/division-list.component';
     RegisterComponent,
     TeamListComponent,
     DivisionListComponent,
+    DivisionComponent,
   ],
   imports: [
     BrowserModule,

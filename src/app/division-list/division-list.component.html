@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let division of divisions">
+  <li *ngFor="let division of divisions" (click)="onSelect(division)">
     <p>{{division.name}}</p>
   </li>
 </ul>

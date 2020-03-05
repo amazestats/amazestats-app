@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DivisionService } from '../division.service';
+import { Router } from '@angular/router';
+import { Division } from '../division';
 
 @Component({
   selector: 'app-division-list',
@@ -10,7 +12,10 @@ export class DivisionListComponent implements OnInit {
 
   private divisions = []
 
-  constructor(private divisionService: DivisionService) { }
+  constructor(
+    private divisionService: DivisionService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.divisionService.getDivisions()
@@ -20,6 +25,10 @@ export class DivisionListComponent implements OnInit {
       .catch(reason => {
         console.error(reason)
       })
+  }
+
+  onSelect(division: Division) {
+    this.router.navigate(['/divisions', division.name])
   }
 
 }

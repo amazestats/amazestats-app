@@ -16,4 +16,11 @@ export class DivisionService {
   getDivisions(): Promise<Division[]> {
     return Promise.resolve(this.divisions)
   }
+
+  getDivision(key: string): Promise<Division> {
+    const division = this.divisions.find(division => division.name === key)
+
+    if (division == null) return Promise.reject()
+    return Promise.resolve(division)
+  }
 }
