@@ -24,6 +24,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UrlInterceptor } from './url-interceptor';
 import { MatchListComponent } from './match-list/match-list.component';
 import { DivisionTableComponent } from './division-table/division-table.component';
+import { DivisionMatchListComponent } from './division-match-list/division-match-list.component';
+import { DivisionTeamListComponent } from './division-team-list/division-team-list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,10 @@ import { DivisionTableComponent } from './division-table/division-table.componen
     DivisionComponent,
     MatchListComponent,
     DivisionTableComponent,
+    DivisionMatchListComponent,
+    DivisionTeamListComponent,
+    DivisionMatchListComponent,
+    DivisionTeamListComponent,
   ],
   imports: [
     BrowserModule,

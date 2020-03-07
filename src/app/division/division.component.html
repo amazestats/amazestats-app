@@ -1,10 +1,6 @@
-<div *ngIf="division$ | async; let division">
-  <p>{{ division.name }}</p>
-
-  <app-division-table [matches]="division.matches" [teams]="division.teams">
-  </app-division-table>
-
-  <app-match-list [matches]="division.matches" [teams]="division.teams">
-  </app-match-list>
-
-</div>
+<mat-toolbar color="accent">
+  <a mat-button routerLink="./matches">Matches</a>
+  <a mat-button routerLink="./table">Table</a>
+  <a mat-button routerLink="./teams">Teams</a>
+</mat-toolbar>
+<router-outlet></router-outlet>

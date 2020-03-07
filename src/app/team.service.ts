@@ -15,4 +15,14 @@ export class TeamService {
     return this.http.get<{ teams: TeamRes[] }>('/teams')
       .pipe(map(teams => teams.teams.map(team => new Team(team))))
   }
+
+  getTeamsByDivisionId(id: number): Observable<Team[]> {
+    return this.http.get<{ teams: TeamRes[] }>(`/teams?divisionId=${id}`)
+      .pipe(map(teams => teams.teams.map(team => new Team(team))))
+  }
+
+  getTeamsByDivisionKey(key: string): Observable<Team[]> {
+    return this.http.get<{ teams: TeamRes[] }>(`/teams?divisionKey=${key}`)
+      .pipe(map(teams => teams.teams.map(team => new Team(team))))
+  }
 }

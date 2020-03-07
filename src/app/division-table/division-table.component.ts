@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Match } from '../match';
 import { Team } from '../team';
 import { ResultService } from '../result.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
+import { DivisionService } from '../division.service'
 
 interface TeamResult {
   position: number,
@@ -22,8 +24,9 @@ interface TeamResult {
 })
 export class DivisionTableComponent implements OnInit {
 
-  @Input() matches: Match[]
-  @Input() teams: Team[]
+  private key: string
+  private matches: Match[]
+  private teams: Team[]
 
   displayedColumns: string[] = [
     'position',
@@ -39,9 +42,26 @@ export class DivisionTableComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private resultService: ResultService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private resultService: ResultService,
+    private divisionService: DivisionService,
+  ) { }
 
   ngOnInit() {
+    this.key = this.route.parent.snapshot.paramMap.get('key')
+
+    this.divisionService.getDivisionByKey(this.key)
+      .subscribe(division => {
+        this.teams = division.teams
+        this.matches = division.matches
+
+        this.setupDataSource()
+      })
+
+  }
+
+  setupDataSource() {
     this.dataSource = new MatTableDataSource(
       this.teams.map(team => {
         let matches = this.matches
@@ -67,6 +87,5 @@ export class DivisionTableComponent implements OnInit {
       }))
 
     this.dataSource.sort = this.sort;
-
   }
 }
