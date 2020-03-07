@@ -4,7 +4,6 @@ import { Division } from '../division';
 import { DivisionService } from '../division.service';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Team } from '../team';
 
 
 @Component({
