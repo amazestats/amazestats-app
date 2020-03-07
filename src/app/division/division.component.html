@@ -9,9 +9,9 @@
 
   <ul>
     <li *ngFor="let match of division.matches">
-      <span>{{ this.getTeamNameById(match.home_team, division.teams) }}</span>
+      <span>{{ this.getTeamNameById(match.homeTeam, division.teams) }}</span>
       <span>-</span>
-      <span>{{ this.getTeamNameById(match.away_team, division.teams) }}</span>
+      <span>{{ this.getTeamNameById(match.awayTeam, division.teams) }}</span>
     </li>
   </ul>
 </div>
