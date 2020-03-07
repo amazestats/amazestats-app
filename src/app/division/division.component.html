@@ -7,11 +7,7 @@
     </li>
   </ul>
 
-  <ul>
-    <li *ngFor="let match of division.matches">
-      <span>{{ this.getTeamNameById(match.homeTeam, division.teams) }}</span>
-      <span>-</span>
-      <span>{{ this.getTeamNameById(match.awayTeam, division.teams) }}</span>
-    </li>
-  </ul>
+  <app-match-list [matches]="division.matches" [teams]="division.teams">
+  </app-match-list>
+
 </div>

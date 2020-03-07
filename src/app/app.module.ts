@@ -19,6 +19,7 @@ import { DivisionListComponent } from './division-list/division-list.component';
 import { DivisionComponent } from './division/division.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UrlInterceptor } from './url-interceptor';
+import { MatchListComponent } from './match-list/match-list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UrlInterceptor } from './url-interceptor';
     TeamListComponent,
     DivisionListComponent,
     DivisionComponent,
+    MatchListComponent,
   ],
   imports: [
     BrowserModule,

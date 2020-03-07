@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let match of matches">
+    <span>{{ this.getTeamNameById(match.homeTeam, teams) }}</span>
+    <span>-</span>
+    <span>{{ this.getTeamNameById(match.awayTeam, teams) }}</span>
+    <ul>
+      <li *ngFor="let set of match.sets">
+        <span>{{ set.homeScore }} - {{ set.awayScore }}</span>
+      </li>
+    </ul>
+  </li>
+</ul>

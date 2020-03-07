@@ -26,8 +26,4 @@ export class DivisionComponent implements OnInit {
       switchMap((params: ParamMap) =>
         this.divisionService.getDivisionByKey(params.get('key'))))
   }
-
-  getTeamNameById(id: number, teams: Team[]): string {
-    return teams.find(team => team.id == id).name
-  }
 }
