@@ -1,12 +1,13 @@
-<ul>
-  <li *ngFor="let match of matches">
-    <span>{{ this.getTeamNameById(match.homeTeam, teams) }}</span>
-    <span>-</span>
-    <span>{{ this.getTeamNameById(match.awayTeam, teams) }}</span>
-    <ul>
-      <li *ngFor="let set of match.sets">
-        <span>{{ set.homeScore }} - {{ set.awayScore }}</span>
-      </li>
-    </ul>
-  </li>
-</ul>
+<mat-list>
+  <h3 mat-subheader>Matches</h3>
+  <mat-list-item *ngFor="let match of matches">
+    <h4 mat-line>{{ this.getTeamNameById(match.homeTeam, teams) }} -
+      {{ this.getTeamNameById(match.awayTeam, teams) }}</h4>
+    <p mat-line>
+      <span *ngFor="let set of match.sets">
+        {{ set.homeScore }} - {{ set.awayScore }}
+      </span>
+    </p>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
