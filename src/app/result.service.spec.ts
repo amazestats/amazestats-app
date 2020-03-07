@@ -341,4 +341,50 @@ fdescribe('ResultService', () => {
       expect(service.getSetWinner(AWAY_WIN_SET)).toBe(-1)
     })
   })
+
+  describe('getSetsWon', () => {
+
+    it('correct set won count', () => {
+      expect(service.getSetsWon(
+        TEAM_1,
+        [
+          {
+            id: 1,
+            homeTeam: TEAM_1.id,
+            awayTeam: 3,
+            sets: [HOME_WIN_SET, AWAY_WIN_SET, AWAY_WIN_SET]
+          },
+          {
+            id: 2,
+            homeTeam: TEAM_1.id,
+            awayTeam: 3,
+            sets: [HOME_WIN_SET, HOME_WIN_SET, AWAY_WIN_SET]
+          },
+        ]
+      )).toBe(3)
+    })
+  })
+
+  describe('getSetsLost', () => {
+
+    it('correct set lost count', () => {
+      expect(service.getSetsLost(
+        TEAM_1,
+        [
+          {
+            id: 2,
+            homeTeam: TEAM_1.id,
+            awayTeam: 3,
+            sets: [HOME_WIN_SET, HOME_WIN_SET, AWAY_WIN_SET]
+          },
+          {
+            id: 3,
+            homeTeam: TEAM_1.id,
+            awayTeam: 4,
+            sets: [HOME_WIN_SET, HOME_WIN_SET, AWAY_WIN_SET]
+          },
+        ]
+      )).toBe(2)
+    })
+  })
 })

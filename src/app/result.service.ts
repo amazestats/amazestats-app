@@ -48,4 +48,23 @@ export class ResultService {
     // the result may have bad input (which is rather likely atm).
     return 0
   }
+
+  getSetsWon(team: Team, matches: Match[]): number {
+    let count = 0
+    matches.forEach(match => {
+      match.sets.forEach(set => {
+        let winner = this.getSetWinner(set)
+        if (winner == 1 && match.homeTeam == team.id ||
+          winner == -1 && match.awayTeam == team.id) {
+          count++
+        }
+      })
+    })
+    return count
+  }
+
+  getSetsLost(team: Team, matches: Match[]): number {
+    return [].concat(...matches.map(match => match.sets)
+    ).length - this.getSetsWon(team, matches)
+  }
 }
