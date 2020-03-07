@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { DivisionListComponent } from './division-list/division-list.component';
 import { DivisionComponent } from './division/division.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UrlInterceptor } from './url-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,13 +34,20 @@ import { DivisionComponent } from './division/division.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

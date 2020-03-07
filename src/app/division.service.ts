@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Division } from './division';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DivisionService {
 
-  private divisions = [
-    new Division("Division 1"),
-    new Division("Division 2"),
-  ]
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  getDivisions(): Promise<Division[]> {
-    return Promise.resolve(this.divisions)
+  getDivisions(): Observable<Division[]> {
+    return this.http.get<{ divisions: Division[] }>('/divisions')
+      .pipe(map(divisions => divisions.divisions))
   }
 
   getDivision(key: string): Promise<Division> {
-    const division = this.divisions.find(division => division.name === key)
-
-    if (division == null) return Promise.reject()
-    return Promise.resolve(division)
+    return Promise.resolve({
+      name: "Premier",
+      id: 16,
+    })
   }
 }

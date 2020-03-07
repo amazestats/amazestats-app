@@ -1,23 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Team } from './team';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
 
-  private teams = [
-    new Team("Pineapple Pizza"),
-    new Team("SuperSmash"),
-    new Team("Den Gode Herden"),
-    new Team("Virvlarna"),
-    new Team("Lurarna"),
-    new Team("Dyrgriparna"),
-  ]
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  getTeams(): Promise<Team[]> {
-    return Promise.resolve(this.teams)
+  getTeams(): Observable<Team[]> {
+    return this.http.get<{ teams: Team[] }>('/teams')
+      .pipe(map(teams => teams.teams))
   }
 }

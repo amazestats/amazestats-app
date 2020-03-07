@@ -10,7 +10,7 @@ import { Division } from '../division';
 })
 export class DivisionListComponent implements OnInit {
 
-  private divisions = []
+  private divisions: Division[] = []
 
   constructor(
     private divisionService: DivisionService,
@@ -19,11 +19,8 @@ export class DivisionListComponent implements OnInit {
 
   ngOnInit() {
     this.divisionService.getDivisions()
-      .then(divisions => {
+      .subscribe(divisions => {
         this.divisions = divisions
-      })
-      .catch(reason => {
-        console.error(reason)
       })
   }
 
