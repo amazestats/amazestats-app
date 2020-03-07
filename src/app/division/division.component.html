@@ -1,11 +1,8 @@
 <div *ngIf="division$ | async; let division">
   <p>{{ division.name }}</p>
 
-  <ul>
-    <li *ngFor="let team of division.teams">
-      {{ team.id }} : {{ team.name }}
-    </li>
-  </ul>
+  <app-division-table [matches]="division.matches" [teams]="division.teams">
+  </app-division-table>
 
   <app-match-list [matches]="division.matches" [teams]="division.teams">
   </app-match-list>

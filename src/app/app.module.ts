@@ -11,6 +11,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatToolbarModule,
+  MatTableModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
@@ -20,6 +21,7 @@ import { DivisionComponent } from './division/division.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UrlInterceptor } from './url-interceptor';
 import { MatchListComponent } from './match-list/match-list.component';
+import { DivisionTableComponent } from './division-table/division-table.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { MatchListComponent } from './match-list/match-list.component';
     DivisionListComponent,
     DivisionComponent,
     MatchListComponent,
+    DivisionTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { MatchListComponent } from './match-list/match-list.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
     MatToolbarModule,
     ReactiveFormsModule,
   ],
