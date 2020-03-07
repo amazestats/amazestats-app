@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, },
   { path: 'register', component: RegisterComponent, },
   { path: 'teams', component: TeamListComponent, },
-  { path: 'divisions/:id', component: DivisionComponent, },
+  { path: 'divisions/:key', component: DivisionComponent, },
   { path: 'divisions', component: DivisionListComponent, },
   { path: '', redirectTo: '/home', pathMatch: 'full', },
 ]

@@ -25,7 +25,7 @@ export class DivisionListComponent implements OnInit {
   }
 
   onSelect(division: Division) {
-    this.router.navigate(['/divisions', division.name])
+    this.router.navigate(['/divisions', division.key])
   }
 
 }

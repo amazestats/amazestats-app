@@ -4,6 +4,7 @@ import { Division } from '../division';
 import { DivisionService } from '../division.service';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Team } from '../team';
 
 
 @Component({
@@ -23,7 +24,10 @@ export class DivisionComponent implements OnInit {
   ngOnInit() {
     this.division$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.divisionService.getDivision(params.get('id'))))
+        this.divisionService.getDivisionByKey(params.get('key'))))
   }
 
+  getTeamNameById(id: number, teams: Team[]): string {
+    return teams.find(team => team.id == id).name
+  }
 }

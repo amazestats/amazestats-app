@@ -13,13 +13,16 @@ export class DivisionService {
 
   getDivisions(): Observable<Division[]> {
     return this.http.get<{ divisions: Division[] }>('/divisions')
-      .pipe(map(divisions => divisions.divisions))
+      .pipe(map(res => res.divisions))
   }
 
-  getDivision(key: string): Promise<Division> {
-    return Promise.resolve({
-      name: "Premier",
-      id: 16,
-    })
+  getDivision(id: number): Observable<Division> {
+    return this.http.get<{ division: Division }>(`/divisions/${id}`)
+      .pipe(map(res => res.division))
+  }
+
+  getDivisionByKey(key: string): Observable<Division> {
+    return this.http.get<{ division: Division }>(`/divisions?key=${key}`)
+      .pipe(map(res => res.division))
   }
 }

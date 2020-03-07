@@ -1,1 +1,17 @@
-<p *ngIf="division$ | async; let division">{{division.name}}</p>
+<div *ngIf="division$ | async; let division">
+  <p>{{ division.name }}</p>
+
+  <ul>
+    <li *ngFor="let team of division.teams">
+      {{ team.id }} : {{ team.name }}
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let match of division.matches">
+      <span>{{ this.getTeamNameById(match.home_team, division.teams) }}</span>
+      <span>-</span>
+      <span>{{ this.getTeamNameById(match.away_team, division.teams) }}</span>
+    </li>
+  </ul>
+</div>
