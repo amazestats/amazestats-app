@@ -1,8 +1,20 @@
 <mat-toolbar color="accent">
   <span>Korpen Volleyboll</span>
 
-  <a mat-button routerLink="/teams">Teams</a>
-  <a mat-button routerLink="/divisions">Divisions</a>
+  <button mat-button [matMenuTriggerFor]="teamMenu">Teams</button>
+  <mat-menu #teamMenu="matMenu">
+    <mat-list *ngFor="let division of divisions">
+      <h4 mat-subheader>{{division.name}}</h4>
+      <a mat-menu-item *ngFor="let team of getTeamsInDivision(division.id)"
+        routerLink="/teams/{{team.key}}">{{team.name}}</a>
+    </mat-list>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="divisionMenu">Divisions</button>
+  <mat-menu #divisionMenu="matMenu">
+    <a mat-menu-item *ngFor="let division of divisions"
+      routerLink="/divisions/{{division.key}}">{{division.name}}</a>
+  </mat-menu>
 
   <a mat-button routerLink="/login">Login</a>
   <a mat-button routerLink="/register">Register</a>

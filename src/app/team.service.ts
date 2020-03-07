@@ -11,6 +11,11 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
+  getTeamByKey(key: string): Observable<Team> {
+    return this.http.get<{ team: TeamRes }>(`/teams?teamKey=${key}`)
+      .pipe(map(team => new Team(team.team)))
+  }
+
   getTeams(): Observable<Team[]> {
     return this.http.get<{ teams: TeamRes[] }>('/teams')
       .pipe(map(teams => teams.teams.map(team => new Team(team))))

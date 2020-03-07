@@ -14,6 +14,7 @@ import {
   MatTableModule,
   MatSortModule,
   MatListModule,
+  MatMenuModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
@@ -26,6 +27,7 @@ import { MatchListComponent } from './match-list/match-list.component';
 import { DivisionTableComponent } from './division-table/division-table.component';
 import { DivisionMatchListComponent } from './division-match-list/division-match-list.component';
 import { DivisionTeamListComponent } from './division-team-list/division-team-list.component';
+import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { DivisionTeamListComponent } from './division-team-list/division-team-li
     DivisionTeamListComponent,
     DivisionMatchListComponent,
     DivisionTeamListComponent,
+    TeamDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { DivisionTeamListComponent } from './division-team-list/division-team-li
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    MatMenuModule,
     MatSortModule,
     MatTableModule,
     MatToolbarModule,
