@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Match } from '../match';
 import { Team } from '../team';
 import { ResultService } from '../result.service';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
-interface ResultTableRow {
+interface TeamResult {
   position: number,
   teamName: string,
   matchesPlayed: number,
   matchesWon: number,
   matchesLost: number,
+  points: number,
 }
 
 @Component({
@@ -25,26 +27,37 @@ export class DivisionTableComponent implements OnInit {
     'position',
     'teamName',
     'matchesPlayed',
+    'points',
     'matchesWon',
     'matchesLost',
   ]
 
-  dataSource: ResultTableRow[] = []
+  dataSource: MatTableDataSource<TeamResult>
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private resultService: ResultService) { }
 
   ngOnInit() {
-    this.dataSource = this.teams.map(team => {
-      return {
-        position: 1,
-        teamName: team.name,
-        matchesPlayed:
-          this.resultService.getMatchesPlayed(team, this.matches).length,
-        matchesWon:
-          this.resultService.getMatchesWon(team, this.matches).length,
-        matchesLost:
-          this.resultService.getMatchesLost(team, this.matches).length,
-      }
-    })
+    this.dataSource = new MatTableDataSource(
+      this.teams.map(team => {
+        let matchesWon =
+          this.resultService.getMatchesWon(team, this.matches).length
+
+        return {
+          position: 1,
+          teamName: team.name,
+          matchesPlayed:
+            this.resultService.getMatchesPlayed(team, this.matches).length,
+          matchesWon: matchesWon,
+          matchesLost:
+            this.resultService.getMatchesLost(team, this.matches).length,
+          points:
+            matchesWon * 3, // TODO: Move logic to result service
+        }
+      }))
+
+    this.dataSource.sort = this.sort;
+
   }
 }

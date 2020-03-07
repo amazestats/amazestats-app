@@ -12,6 +12,7 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatTableModule,
+  MatSortModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
@@ -43,6 +44,7 @@ import { DivisionTableComponent } from './division-table/division-table.componen
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSortModule,
     MatTableModule,
     MatToolbarModule,
     ReactiveFormsModule,
