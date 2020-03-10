@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Match } from '../match';
-import { Team } from '../team';
+import { Match } from '@models/match';
+import { Team } from '@models/team';
 
 @Component({
   selector: 'app-match-list',

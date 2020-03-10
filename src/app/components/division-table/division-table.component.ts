@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Match } from '../match';
-import { Team } from '../team';
-import { ResultService } from '../result.service';
+import { Match } from '@models/match';
+import { Team } from '@models/team';
+import { ResultService } from '@services/result.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { DivisionService } from '../division.service'
+import { DivisionService } from '@services/division.service'
 
 interface TeamResult {
   position: number,

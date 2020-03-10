@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Division } from '../division';
-import { DivisionService } from '../division.service';
+import { Division } from '@models/division';
+import { DivisionService } from '@services/division.service';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 

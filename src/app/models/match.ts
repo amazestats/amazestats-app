@@ -1,4 +1,4 @@
-import { Set, SetRes } from './set'
+import { Set, SetRes } from '@models/set'
 
 export interface MatchRes {
   id: number

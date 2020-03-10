@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Division, DivisionRes } from './division';
+import { Division, DivisionRes } from '@models/division';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

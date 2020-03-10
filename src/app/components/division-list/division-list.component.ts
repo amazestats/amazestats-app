@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DivisionService } from '../division.service';
+import { DivisionService } from '@services/division.service';
 import { Router } from '@angular/router';
-import { Division } from '../division';
+import { Division } from '@models/division';
 
 @Component({
   selector: 'app-division-list',

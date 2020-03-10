@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DivisionService } from './division.service'
-import { Division } from './division';
-import { TeamService } from './team.service';
-import { Team } from './team'
+import { DivisionService } from '@services/division.service'
+import { Division } from '@models/division';
+import { TeamService } from '@services/team.service';
+import { Team } from '@models/team'
 
 @Component({
   selector: 'app-root',

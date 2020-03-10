@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Match } from './match';
-import { Team } from './team';
-import { Set } from './set'
+import { Match } from '@models/match';
+import { Team } from '@models/team';
+import { Set } from '@models/set'
 
 @Injectable({
   providedIn: 'root'

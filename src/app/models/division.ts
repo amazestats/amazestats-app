@@ -1,5 +1,5 @@
-import { Team, TeamRes } from './team'
-import { Match, MatchRes } from './match'
+import { Team, TeamRes } from '@models/team'
+import { Match, MatchRes } from '@models/match'
 
 export interface DivisionRes {
   id: number

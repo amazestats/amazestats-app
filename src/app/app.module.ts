@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from '@components/login/login.component';
+import { HomeComponent } from '@components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -17,17 +17,17 @@ import {
   MatMenuModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
-import { TeamListComponent } from './team-list/team-list.component';
-import { DivisionListComponent } from './division-list/division-list.component';
-import { DivisionComponent } from './division/division.component';
+import { RegisterComponent } from '@components/register/register.component';
+import { TeamListComponent } from '@components/team-list/team-list.component';
+import { DivisionListComponent } from '@components/division-list/division-list.component';
+import { DivisionComponent } from '@components/division/division.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { UrlInterceptor } from './url-interceptor';
-import { MatchListComponent } from './match-list/match-list.component';
-import { DivisionTableComponent } from './division-table/division-table.component';
-import { DivisionMatchListComponent } from './division-match-list/division-match-list.component';
-import { DivisionTeamListComponent } from './division-team-list/division-team-list.component';
-import { TeamDetailComponent } from './team-detail/team-detail.component';
+import { UrlInterceptor } from '@providers/url-interceptor';
+import { MatchListComponent } from '@components/match-list/match-list.component';
+import { DivisionTableComponent } from '@components/division-table/division-table.component';
+import { DivisionMatchListComponent } from '@components/division-match-list/division-match-list.component';
+import { DivisionTeamListComponent } from '@components/division-team-list/division-team-list.component';
+import { TeamDetailComponent } from '@components/team-detail/team-detail.component';
 
 @NgModule({
   declarations: [
