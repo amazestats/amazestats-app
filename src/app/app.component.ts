@@ -11,7 +11,7 @@ import { Team } from '@models/team'
 })
 export class AppComponent implements OnInit {
 
-  title = 'vollui';
+  title = 'amazestats';
   private divisions: Division[] = []
   private teams: Team[] = []
 

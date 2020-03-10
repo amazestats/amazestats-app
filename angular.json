@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vollui": {
+    "amazestats": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vollui",
+            "outputPath": "dist/amazestats",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vollui:build"
+            "browserTarget": "amazestats:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "vollui:build:production"
+              "browserTarget": "amazestats:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vollui:build"
+            "browserTarget": "amazestats:build"
           }
         },
         "test": {
@@ -112,16 +112,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "vollui:serve"
+            "devServerTarget": "amazestats:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "vollui:serve:production"
+              "devServerTarget": "amazestats:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "vollui"
+  "defaultProject": "amazestats"
 }
