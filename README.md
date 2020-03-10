@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
+## API Service
+
+To run this application, the API service must be running.
+See [API Service README](https://github.com/amazestats/amazestats-api/blob/master/README.md) for more information.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
