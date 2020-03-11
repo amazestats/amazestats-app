@@ -64,11 +64,11 @@ export class DivisionTableComponent implements OnInit {
   setupDataSource() {
     this.dataSource = new MatTableDataSource(
       this.teams.map(team => {
-        let matches = this.matches
+        const matches = this.matches
           .filter(match =>
             match.homeTeam == team.id ||
             match.awayTeam == team.id)
-        let matchesWon =
+        const matchesWon =
           this.resultService.getMatchesWon(team, matches).length
 
         return {
@@ -76,7 +76,7 @@ export class DivisionTableComponent implements OnInit {
           teamName: team.name,
           matchesPlayed:
             this.resultService.getMatchesPlayed(team, matches).length,
-          matchesWon: matchesWon,
+          matchesWon,
           matchesLost:
             this.resultService.getMatchesLost(team, matches).length,
           points:

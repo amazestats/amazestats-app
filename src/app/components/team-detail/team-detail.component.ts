@@ -18,7 +18,7 @@ export class TeamDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let key = this.route.snapshot.paramMap.get('key')
+    const key = this.route.snapshot.paramMap.get('key')
     this.teamService.getTeamByKey(key)
       .subscribe(team => this.team = team)
   }

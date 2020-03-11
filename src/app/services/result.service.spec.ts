@@ -37,7 +37,7 @@ fdescribe('ResultService', () => {
       expect(service.getMatchesPlayed(
         {
           id: 1,
-          name: "dummy"
+          name: 'dummy'
         },
         [
           {
@@ -60,7 +60,7 @@ fdescribe('ResultService', () => {
       expect(service.getMatchesPlayed(
         {
           id: 1,
-          name: "dummy"
+          name: 'dummy'
         },
         [
           {
@@ -89,7 +89,7 @@ fdescribe('ResultService', () => {
       expect(service.getMatchesPlayed(
         {
           id: 1,
-          name: "dummy"
+          name: 'dummy'
         },
         [
           {
@@ -112,7 +112,7 @@ fdescribe('ResultService', () => {
       expect(service.getMatchesPlayed(
         {
           id: 2,
-          name: "dummy"
+          name: 'dummy'
         },
         [
           {

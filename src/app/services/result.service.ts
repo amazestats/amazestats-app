@@ -30,19 +30,19 @@ export class ResultService {
   }
 
   getMatchWinner(match: Match): number {
-    let winner = match.sets
+    const winner = match.sets
       .map(set => this.getSetWinner(set))
       .reduce((a, b) => a + b, 0)
 
-    if (winner > 0) return match.homeTeam
-    if (winner < 0) return match.awayTeam
+    if (winner > 0) { return match.homeTeam }
+    if (winner < 0) { return match.awayTeam }
 
     throw Error('Match does not have a winner.')
   }
 
   getSetWinner(set: Set): number {
-    if (set.homeScore > set.awayScore) return 1
-    if (set.awayScore > set.homeScore) return -1
+    if (set.homeScore > set.awayScore) { return 1 }
+    if (set.awayScore > set.homeScore) { return -1 }
 
     // Might want to look this over and throw an error instead if we find that
     // the result may have bad input (which is rather likely atm).
@@ -53,7 +53,7 @@ export class ResultService {
     let count = 0
     matches.forEach(match => {
       match.sets.forEach(set => {
-        let winner = this.getSetWinner(set)
+        const winner = this.getSetWinner(set)
         if (winner == 1 && match.homeTeam == team.id ||
           winner == -1 && match.awayTeam == team.id) {
           count++
