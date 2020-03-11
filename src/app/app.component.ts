@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { DivisionService } from '@services/division.service'
-import { Division } from '@models/division';
-import { TeamService } from '@services/team.service';
+import { Division } from '@models/division'
+import { TeamService } from '@services/team.service'
 import { Team } from '@models/team'
 
 @Component({
@@ -11,7 +11,7 @@ import { Team } from '@models/team'
 })
 export class AppComponent implements OnInit {
 
-  title = 'amazestats';
+  title = 'amazestats'
   private divisions: Division[] = []
   private teams: Team[] = []
 

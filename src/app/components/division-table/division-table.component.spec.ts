@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { DivisionTableComponent } from './division-table.component';
+import { DivisionTableComponent } from './division-table.component'
 
 describe('DivisionTableComponent', () => {
-  let component: DivisionTableComponent;
-  let fixture: ComponentFixture<DivisionTableComponent>;
+  let component: DivisionTableComponent
+  let fixture: ComponentFixture<DivisionTableComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DivisionTableComponent ]
     })
-    .compileComponents();
-  }));
+    .compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DivisionTableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(DivisionTableComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

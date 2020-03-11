@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DivisionService } from '@services/division.service';
-import { Team } from '@models/team';
-import { Match } from '@models/match';
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { DivisionService } from '@services/division.service'
+import { Team } from '@models/team'
+import { Match } from '@models/match'
 
 @Component({
   selector: 'app-division-match-list',

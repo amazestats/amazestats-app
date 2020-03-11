@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { DivisionMatchListComponent } from './division-match-list.component';
+import { DivisionMatchListComponent } from './division-match-list.component'
 
 describe('DivisionMatchListComponent', () => {
-  let component: DivisionMatchListComponent;
-  let fixture: ComponentFixture<DivisionMatchListComponent>;
+  let component: DivisionMatchListComponent
+  let fixture: ComponentFixture<DivisionMatchListComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DivisionMatchListComponent ]
     })
-    .compileComponents();
-  }));
+    .compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DivisionMatchListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(DivisionMatchListComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

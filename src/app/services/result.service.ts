@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Match } from '@models/match';
-import { Team } from '@models/team';
+import { Injectable } from '@angular/core'
+import { Match } from '@models/match'
+import { Team } from '@models/team'
 import { Set } from '@models/set'
 
 @Injectable({

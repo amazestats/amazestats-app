@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { ResultService } from './result.service';
+import { ResultService } from './result.service'
 import { Set } from './set'
 import { Team } from './team'
 

@@ -1,4 +1,4 @@
-import { Match } from './match';
+import { Match } from './match'
 
 describe('Match', () => {
-});
+})

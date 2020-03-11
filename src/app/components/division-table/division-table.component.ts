@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Match } from '@models/match';
-import { Team } from '@models/team';
-import { ResultService } from '@services/result.service';
-import { MatSort, MatTableDataSource } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { Match } from '@models/match'
+import { Team } from '@models/team'
+import { ResultService } from '@services/result.service'
+import { MatSort, MatTableDataSource } from '@angular/material'
+import { ActivatedRoute } from '@angular/router'
 import { DivisionService } from '@services/division.service'
 
 interface TeamResult {
@@ -40,7 +40,7 @@ export class DivisionTableComponent implements OnInit {
 
   dataSource: MatTableDataSource<TeamResult>
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort
 
   constructor(
     private route: ActivatedRoute,
@@ -86,6 +86,6 @@ export class DivisionTableComponent implements OnInit {
         }
       }))
 
-    this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort
   }
 }
