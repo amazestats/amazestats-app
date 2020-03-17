@@ -27,7 +27,8 @@ import { MatchListComponent } from '@components/match-list/match-list.component'
 import { DivisionTableComponent } from '@components/division-table/division-table.component'
 import { DivisionMatchListComponent } from '@components/division-match-list/division-match-list.component'
 import { DivisionTeamListComponent } from '@components/division-team-list/division-team-list.component'
-import { TeamDetailComponent } from '@components/team-detail/team-detail.component'
+import { TeamDetailComponent } from '@components/team-detail/team-detail.component';
+import { AuthenticationInterceptor } from '@providers/authentication.interceptor'
 
 @NgModule({
   declarations: [
@@ -64,9 +65,14 @@ import { TeamDetailComponent } from '@components/team-detail/team-detail.compone
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor,
       multi: true,
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })
