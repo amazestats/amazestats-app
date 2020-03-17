@@ -22,8 +22,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.username.value, this.password.value)
-      .then(username => {
-        console.info(`Successfully logged in ${username}.`)
+      .subscribe(res => {
+        console.info(`Successfully logged in ${this.username.value}.`)
+        console.info(`Received token: ${res.token}`)
         this.router.navigate(['/home'])
       }, error => {
         console.error('Could not login.', error)

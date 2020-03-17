@@ -22,15 +22,17 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.userService.register(this.username.value, this.password.value)
-      .then(username => {
-        console.info(`Successfully registered ${username}.`)
-        this.router.navigate(['/home'])
+      .subscribe(
+        _res => {
+          console.info('Successfully registered.')
+          this.router.navigate(['/home'])
+        },
+        err => {
+          console.error(err)
+        },
+        () => console.log("Register call completed.")
 
-      }, error => {
-        console.error('Could not register:', error)
-        this.username.setValue('')
-        this.password.setValue('')
-      })
+      )
   }
 
 }
