@@ -10,6 +10,8 @@ import { DivisionTableComponent } from '@components/division-table/division-tabl
 import { DivisionMatchListComponent } from '@components/division-match-list/division-match-list.component'
 import { DivisionTeamListComponent } from '@components/division-team-list/division-team-list.component'
 import { TeamDetailComponent } from '@components/team-detail/team-detail.component'
+import { SettingsComponent } from '@components/settings/settings.component'
+import { AuthenticationGuard } from './guards/authentication.guard'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, },
@@ -27,6 +29,11 @@ const routes: Routes = [
       { path: 'table', component: DivisionTableComponent, },
       { path: 'teams', component: DivisionTeamListComponent, },
     ],
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthenticationGuard],
   },
   { path: '', redirectTo: '/home', pathMatch: 'full', },
 ]
