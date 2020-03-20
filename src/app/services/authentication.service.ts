@@ -2,33 +2,43 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-
-const ACCESS_TOKEN_STORAGE = 'TOKEN'
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService,
+  ) { }
+
+  isAuthenticated(): boolean {
+    return this.storageService.hasValidAccessToken()
+  }
 
   getAccessToken(): string {
-    return localStorage.getItem(ACCESS_TOKEN_STORAGE)
+    return this.storageService.getAccessToken()
   }
 
-  setAccessToken(token: string) {
-    localStorage.setItem(ACCESS_TOKEN_STORAGE, token)
-  }
-
-  updateAccessToken(username: string, password: string): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>('/token', null, {
+  updateAccessToken(
+    username: string,
+    password: string
+  ): Observable<TokenResponse> {
+    return this.http.post<TokenResponse>('/token', null, {
       headers: new HttpHeaders().set(
         'Authorization', `Basic ${this.basicAuth(username, password)}`
       )
-    }).pipe(tap(res => this.setAccessToken(res.token)))
+    }).pipe(tap(res => this.storageService.setAccessToken(res.token)))
   }
 
   basicAuth(username: string, password: string): string {
     return btoa(`${username}:${password}`)
   }
+}
+
+interface TokenResponse {
+  token: string,
+  id: number,
 }
