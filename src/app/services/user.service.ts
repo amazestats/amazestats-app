@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { tap } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { AuthenticationService } from './authentication.service'
@@ -10,7 +10,10 @@ import { StorageService } from './storage.service'
 })
 export class UserService {
 
+  private userLoggedIn = new Subject<boolean>()
   private userId: number = null
+
+  userLoggedIn$ = this.userLoggedIn.asObservable()
 
   constructor(
     private auth: AuthenticationService,
@@ -27,11 +30,15 @@ export class UserService {
 
   login(username: string, password: string): Observable<any> {
     return this.auth.updateAccessToken(username, password)
-      .pipe(tap(res => this.setCurrentUser(res.id)))
+      .pipe(tap(res => {
+        this.setCurrentUser(res.id)
+        this.userLoggedIn.next(true)
+      }))
   }
 
   logout() {
     this.storageService.clearUserDetails()
+    this.userLoggedIn.next(false)
   }
 
   register(username: string, password: string): Observable<any> {
@@ -42,7 +49,10 @@ export class UserService {
       // We have to save the token, otherwise the user would be forced to log
       // in as well after the registration to get the token.
       this.auth.updateAccessToken(username, password).subscribe(
-        res => this.setCurrentUser(res.id),
+        res => {
+          this.setCurrentUser(res.id)
+          this.userLoggedIn.next(true)
+        },
         err => console.error("Failed to retreive token after registration.", err)
       )
     }))

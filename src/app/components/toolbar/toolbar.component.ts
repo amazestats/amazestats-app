@@ -26,7 +26,9 @@ export class ToolbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authenticated = this.authService.isAuthenticated()
+    this.userService.userLoggedIn$.subscribe(
+      isLoggedIn => this.authenticated = isLoggedIn
+    )
 
     this.divisionService.getDivisions()
       .subscribe(divisions => this.divisions = divisions)
