@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { UserService } from '@services/user.service'
 import { FormControl } from '@angular/forms'
 import { Router } from '@angular/router'
+import { AuthenticationService } from '@services/authentication.service'
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,12 @@ export class LoginComponent implements OnInit {
   private password = new FormControl('')
 
   constructor(
+    private authService: AuthenticationService,
     private userService: UserService,
     private router: Router,
-  ) { }
+  ) {
+    if (authService.isAuthenticated()) router.navigate(['/'])
+  }
 
   ngOnInit() { }
 

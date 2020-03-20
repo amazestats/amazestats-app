@@ -15,6 +15,7 @@ import {
   MatSortModule,
   MatListModule,
   MatMenuModule,
+  MatIconModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RegisterComponent } from '@components/register/register.component'
@@ -28,6 +29,8 @@ import { DivisionTableComponent } from '@components/division-table/division-tabl
 import { DivisionMatchListComponent } from '@components/division-match-list/division-match-list.component'
 import { DivisionTeamListComponent } from '@components/division-team-list/division-team-list.component'
 import { TeamDetailComponent } from '@components/team-detail/team-detail.component';
+import { AuthenticationInterceptor } from '@providers/authentication.interceptor';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SettingsComponent } from './components/settings/settings.component'
 
 @NgModule({
@@ -46,6 +49,7 @@ import { SettingsComponent } from './components/settings/settings.component'
     DivisionMatchListComponent,
     DivisionTeamListComponent,
     TeamDetailComponent,
+    ToolbarComponent,
     SettingsComponent,
   ],
   imports: [
@@ -55,6 +59,7 @@ import { SettingsComponent } from './components/settings/settings.component'
     HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
