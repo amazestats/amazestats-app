@@ -16,8 +16,10 @@ export class UrlInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
+    let url = `${this.url}${req.url}`
+    console.debug(`Sending request: ${url}`)
     return next.handle(req.clone({
-      url: `${this.url}${req.url}`
+      url: url
     }))
   }
 }
