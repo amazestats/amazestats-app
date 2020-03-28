@@ -14,9 +14,7 @@ export class MatchListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    console.debug(this.matches)
-  }
+  ngOnInit() { }
 
   getTeamNameById(id: number, teams: Team[]): string {
     return teams.find(team => team.id == id).name

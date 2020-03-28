@@ -2,6 +2,7 @@ import { Component, OnInit, } from '@angular/core'
 import { TeamService } from '@services/team.service'
 import { Team } from '@models/team'
 import { ActivatedRoute } from '@angular/router'
+import { DivisionService } from '@services/division.service'
 
 @Component({
   selector: 'app-division-team-list',
@@ -15,14 +16,18 @@ export class DivisionTeamListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private divisionService: DivisionService,
   ) { }
 
   ngOnInit() {
-    this.key = this.route.parent.snapshot.paramMap.get('key')
-
-    this.teamService.getTeamsByDivisionKey(this.key)
-      .subscribe(teams => this.teams = teams)
+    this.route.parent.params.subscribe(params => {
+      return this.divisionService.getDivisionByKey(params.key)
+        .subscribe(division => {
+          this.teamService.getTeamsByDivision(division.id)
+            .subscribe(teams => this.teams = teams)
+        })
+    })
   }
 
 }

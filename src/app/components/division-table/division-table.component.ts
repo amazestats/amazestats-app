@@ -5,6 +5,10 @@ import { ResultService } from '@services/result.service'
 import { MatSort, MatTableDataSource } from '@angular/material'
 import { ActivatedRoute } from '@angular/router'
 import { DivisionService } from '@services/division.service'
+import { TeamService } from '@services/team.service'
+import { MatchService } from '@services/match.service'
+import { map } from 'rxjs/operators'
+import { combineLatest } from 'rxjs'
 
 interface TeamResult {
   position: number,
@@ -46,19 +50,30 @@ export class DivisionTableComponent implements OnInit {
     private route: ActivatedRoute,
     private resultService: ResultService,
     private divisionService: DivisionService,
+    private teamService: TeamService,
+    private matchService: MatchService,
   ) { }
 
   ngOnInit() {
-    this.key = this.route.parent.snapshot.paramMap.get('key')
+    this.route.parent.params.subscribe(params => {
+      this.key = params.key
 
-    this.divisionService.getDivisionByKey(this.key)
-      .subscribe(division => {
-        this.teams = division.teams
-        this.matches = division.matches
+      this.divisionService.getDivisionByKey(params.key)
+        .subscribe(division => {
+          const teams$ = this.teamService.getTeamsByDivision(division.id)
+          const matches$ = this.matchService
+            .getMatchesBySeason(division.seasons[0].id)
 
-        this.setupDataSource()
-      })
+          combineLatest([teams$, matches$]).pipe(
+            map(([teams, matches]) => ({ teams, matches }))
+          ).subscribe(pair => {
+            this.teams = pair.teams
+            this.matches = pair.matches
 
+            this.setupDataSource()
+          })
+        })
+    })
   }
 
   setupDataSource() {

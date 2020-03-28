@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, ParamMap } from '@angular/router'
 import { Division } from '@models/division'
 import { DivisionService } from '@services/division.service'
-import { switchMap } from 'rxjs/operators'
+import { switchMap, find, map } from 'rxjs/operators'
 import { Observable } from 'rxjs'
 
 
@@ -22,7 +22,8 @@ export class DivisionComponent implements OnInit {
 
   ngOnInit() {
     this.division$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.divisionService.getDivisionByKey(params.get('key'))))
+      switchMap((params: ParamMap) => {
+        return this.divisionService.getDivisionByKey(params.get('key'))
+      }))
   }
 }

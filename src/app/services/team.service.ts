@@ -11,9 +11,14 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
+  getTeamById(id: number): Observable<Team> {
+    return this.http.get<{ team: TeamRes }>(`/teams/${id}`)
+      .pipe(map(res => new Team(res.team)))
+  }
+
   getTeamByKey(key: string): Observable<Team> {
-    return this.http.get<{ team: TeamRes }>(`/teams?teamKey=${key}`)
-      .pipe(map(team => new Team(team.team)))
+    return this.http.get<{ teams: TeamRes[] }>(`/teams?key=${key}`)
+      .pipe(map(res => new Team(res.teams[0])))
   }
 
   getTeams(): Observable<Team[]> {
@@ -21,13 +26,8 @@ export class TeamService {
       .pipe(map(teams => teams.teams.map(team => new Team(team))))
   }
 
-  getTeamsByDivisionId(id: number): Observable<Team[]> {
-    return this.http.get<{ teams: TeamRes[] }>(`/teams?divisionId=${id}`)
-      .pipe(map(teams => teams.teams.map(team => new Team(team))))
-  }
-
-  getTeamsByDivisionKey(key: string): Observable<Team[]> {
-    return this.http.get<{ teams: TeamRes[] }>(`/teams?divisionKey=${key}`)
+  getTeamsByDivision(id: number): Observable<Team[]> {
+    return this.http.get<{ teams: TeamRes[] }>(`/divisions/${id}/teams`)
       .pipe(map(teams => teams.teams.map(team => new Team(team))))
   }
 }
