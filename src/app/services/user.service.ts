@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
-import { tap } from 'rxjs/operators'
+import { tap, map } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { AuthenticationService } from './authentication.service'
 import { StorageService } from './storage.service'
+import { User } from '@models/user'
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,11 @@ export class UserService {
 
   getCurrentUser(): number {
     return this.userId
+  }
+
+  getUser(userId: number): Observable<User> {
+    return this.http.get<{ user: User }>(`/users/${userId}`)
+      .pipe(map(res => res.user))
   }
 
 }
