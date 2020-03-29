@@ -15,4 +15,12 @@ export class SeasonService {
     return this.http.get<{ season: SeasonRes }>(`/seasons/${id}`)
       .pipe(map(res => new Season(res.season)))
   }
+
+  getSeasonByKey(key: string): Observable<Season> {
+    // FIXME: Replace by '/seasons?key=<key>' when available
+    return this.http.get<{ seasons: SeasonRes[] }>('/seasons')
+      .pipe(map(res => {
+        return new Season(res.seasons.find(season => season.key === key))
+      }))
+  }
 }
