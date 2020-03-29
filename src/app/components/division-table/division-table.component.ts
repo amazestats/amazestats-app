@@ -3,7 +3,7 @@ import { Match } from '@models/match'
 import { Team } from '@models/team'
 import { ResultService } from '@services/result.service'
 import { MatSort, MatTableDataSource } from '@angular/material'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { DivisionService } from '@services/division.service'
 import { TeamService } from '@services/team.service'
 import { MatchService } from '@services/match.service'
@@ -51,6 +51,7 @@ export class DivisionTableComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private resultService: ResultService,
     private divisionService: DivisionService,
@@ -60,15 +61,25 @@ export class DivisionTableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.parent.params.subscribe(params => {
-      this.key = params.key
+    combineLatest([this.route.parent.params, this.route.queryParams])
+      .pipe(map(
+        ([params, queryParams]) => ({ params, queryParams })
+      )).subscribe(route => {
+        this.key = route.params.key
 
-      this.divisionService.getDivisionByKey(params.key)
-        .subscribe(division => {
-          this.seasons = division.seasons
-          this.seasonChanged(division.seasons[0].id)
-        })
-    })
+        this.divisionService.getDivisionByKey(route.params.key)
+          .subscribe(division => {
+            this.seasons = division.seasons
+
+            // If we have a query parameter for season we use it
+            let season = route.queryParams.season == null ?
+              division.seasons[0].id : division.seasons.find(
+                season => season.key === route.queryParams.season).id
+
+            this.seasonChanged(season)
+          })
+      })
+
   }
 
   setupDataSource() {
@@ -101,7 +112,10 @@ export class DivisionTableComponent implements OnInit {
 
   seasonChanged(season: number) {
     this.seasonService.getSeasonById(season)
-      .subscribe(season => this.season = season)
+      .subscribe(season => {
+        this.season = season
+        this.updateQuery(season.key)
+      })
 
     const teams$ = this.teamService.getTeamsBySeason(season)
     const matches$ = this.matchService.getMatchesBySeason(season)
@@ -118,5 +132,16 @@ export class DivisionTableComponent implements OnInit {
 
   private selectedSeason(): number {
     return this.season != null ? this.season.id : null
+  }
+
+  private updateQuery(season: string) {
+    this.router.navigate(
+      [],
+      {
+        relativeTo: this.route,
+        queryParams: { season },
+        queryParamsHandling: 'merge'
+      }
+    )
   }
 }
