@@ -9,6 +9,8 @@ import { TeamService } from '@services/team.service'
 import { MatchService } from '@services/match.service'
 import { map } from 'rxjs/operators'
 import { combineLatest } from 'rxjs'
+import { Season } from '@models/season'
+import { SeasonService } from '@services/season.service'
 
 interface TeamResult {
   position: number,
@@ -29,6 +31,8 @@ interface TeamResult {
 export class DivisionTableComponent implements OnInit {
 
   private key: string
+  private seasons: Season[] = []
+  private season: Season
   private matches: Match[]
   private teams: Team[]
 
@@ -50,6 +54,7 @@ export class DivisionTableComponent implements OnInit {
     private route: ActivatedRoute,
     private resultService: ResultService,
     private divisionService: DivisionService,
+    private seasonService: SeasonService,
     private teamService: TeamService,
     private matchService: MatchService,
   ) { }
@@ -60,18 +65,8 @@ export class DivisionTableComponent implements OnInit {
 
       this.divisionService.getDivisionByKey(params.key)
         .subscribe(division => {
-          const teams$ = this.teamService.getTeamsByDivision(division.id)
-          const matches$ = this.matchService
-            .getMatchesBySeason(division.seasons[0].id)
-
-          combineLatest([teams$, matches$]).pipe(
-            map(([teams, matches]) => ({ teams, matches }))
-          ).subscribe(pair => {
-            this.teams = pair.teams
-            this.matches = pair.matches
-
-            this.setupDataSource()
-          })
+          this.seasons = division.seasons
+          this.seasonChanged(division.seasons[0].id)
         })
     })
   }
@@ -102,5 +97,26 @@ export class DivisionTableComponent implements OnInit {
       }))
 
     this.dataSource.sort = this.sort
+  }
+
+  seasonChanged(season: number) {
+    this.seasonService.getSeasonById(season)
+      .subscribe(season => this.season = season)
+
+    const teams$ = this.teamService.getTeamsBySeason(season)
+    const matches$ = this.matchService.getMatchesBySeason(season)
+
+    combineLatest([teams$, matches$]).pipe(map(
+      ([teams, matches]) => ({ teams, matches })
+    )).subscribe(pair => {
+      this.teams = pair.teams
+      this.matches = pair.matches
+
+      this.setupDataSource()
+    })
+  }
+
+  private selectedSeason(): number {
+    return this.season != null ? this.season.id : null
   }
 }
