@@ -14,11 +14,11 @@ $my_primary: (
     50 : #ebf7ec,
     100 : #ceead0,
     200 : #adddb0,
-    300 : #8ccf90,
+    300 : #8eed90,
     400 : #74c479,
     500 : #5bba61,
     600 : #53b359,
-    700 : #49ab4f,
+    700 : #248934,
     800 : #40a345,
     900 : #2f9433,
     A100 : #daffdc,
@@ -47,11 +47,11 @@ $my_secondary: (
     50 : #ebf6f7,
     100 : #cee9ea,
     200 : #addadd,
-    300 : #8ccbcf,
+    300 : #8ee7ec,
     400 : #74c0c4,
     500 : #5bb5ba,
     600 : #53aeb3,
-    700 : #49a5ab,
+    700 : #22858a,
     800 : #409da3,
     900 : #2f8d94,
     A100 : #dafdff,
@@ -80,8 +80,8 @@ $my_secondary: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$amazestats-primary: mat-palette($my_primary);
-$amazestats-accent: mat-palette($my_secondary);
+$amazestats-primary: mat-palette($my_primary, 500, 300, 700);
+$amazestats-accent: mat-palette($my_secondary, 500, 300, 700);
 
 // The warn palette is optional (defaults to red).
 $amazestats-warn: mat-palette($mat-red);
@@ -95,6 +95,15 @@ $amazestats-theme: mat-light-theme($amazestats-primary, $amazestats-accent, $ama
 @include angular-material-theme($amazestats-theme);
 
 /* You can add global styles to this file, and also import other style files */
+.alternate-theme {
+    $alternate-primary: mat-palette($my_primary, 700);
+    $alternate-accent: mat-palette($my_secondary, 700);
+    $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent, $amazestats-warn);
+
+    @include angular-material-theme($alternate-theme);
+}
+
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
