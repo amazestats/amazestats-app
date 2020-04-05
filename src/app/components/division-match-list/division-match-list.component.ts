@@ -33,7 +33,7 @@ export class DivisionMatchListComponent implements OnInit {
           this.teamService.getTeamsByDivision(division.id)
             .subscribe(teams => this.teams = teams)
 
-          this.matchService.getMatchesBySeason(division.seasons[0].id)
+          this.matchService.getMatchesBySeason(division.seasons[division.seasons.length-1].id)
             .subscribe(matches => this.matches = matches)
         })
     })
