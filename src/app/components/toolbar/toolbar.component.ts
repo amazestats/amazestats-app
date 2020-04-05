@@ -26,9 +26,9 @@ export class ToolbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.userLoggedIn$.subscribe(
-      isLoggedIn => this.authenticated = isLoggedIn
-    )
+    // FIXME: This has to be replaced with a subscription so that the toolbar
+    // authentication info does not become outdated.
+    this.authenticated = this.authService.isAuthenticated()
 
     this.divisionService.getDivisions()
       .subscribe(divisions => this.divisions = divisions)
