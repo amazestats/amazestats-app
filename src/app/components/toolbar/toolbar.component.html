@@ -16,6 +16,8 @@
       routerLink="/divisions/{{division.key}}">{{division.name}}</a>
   </mat-menu>
 
+  <span class="right-align-spacer"></span>
+  
   <a mat-button *ngIf="!this.authService.isAuthenticated()"
     routerLink="/login">Login</a>
   <a mat-button *ngIf="!this.authService.isAuthenticated()"
