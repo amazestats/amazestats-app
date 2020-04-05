@@ -30,7 +30,11 @@ export class AuthenticationService {
       headers: new HttpHeaders().set(
         'Authorization', `Basic ${this.basicAuth(username, password)}`
       )
-    }).pipe(tap(res => this.storageService.setAccessToken(res.token)))
+    }).pipe(tap(res => {
+      this.storageService.setAccessToken(
+        res.token,
+        new Date(res["expiration-date"]))
+    }))
   }
 
   basicAuth(username: string, password: string): string {
@@ -41,4 +45,5 @@ export class AuthenticationService {
 interface TokenResponse {
   token: string,
   id: number,
+  'expiration-date': string,
 }

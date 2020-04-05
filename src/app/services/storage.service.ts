@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 const ACCESS_TOKEN_STORAGE = 'TOKEN'
+const ACCESS_TOKEN_EXPIRATION = 'EXPIRE'
 const USER_ID_STORAGE = 'USER_ID'
 
 @Injectable({
@@ -11,8 +12,13 @@ export class StorageService {
   constructor() { }
 
   clearUserDetails() {
+    localStorage.setItem(ACCESS_TOKEN_EXPIRATION, "")
     localStorage.setItem(ACCESS_TOKEN_STORAGE, "")
     localStorage.setItem(USER_ID_STORAGE, "")
+  }
+
+  getAccessTokenExpiration(): Date {
+    return new Date(localStorage.getItem(ACCESS_TOKEN_EXPIRATION))
   }
 
   getAccessToken(): string {
@@ -20,11 +26,16 @@ export class StorageService {
   }
 
   hasValidAccessToken(): boolean {
+    if (this.getAccessTokenExpiration().valueOf() < Date.now()) {
+      return false
+    }
+
     let token = this.getAccessToken()
     return token != null && token != ""
   }
 
-  setAccessToken(token: string) {
+  setAccessToken(token: string, expiration: Date) {
+    localStorage.setItem(ACCESS_TOKEN_EXPIRATION, expiration.toLocaleString())
     localStorage.setItem(ACCESS_TOKEN_STORAGE, token)
   }
 
