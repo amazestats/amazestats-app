@@ -19,4 +19,8 @@ export class MatchListComponent implements OnInit {
   getTeamNameById(id: number, teams: Team[]): string {
     return teams.find(team => team.id == id).name
   }
+
+  showReferee(id: number, teams:Team[]): string {
+    return id ? this.getTeamNameById(id, teams) : "No referee set"
+  }
 }
