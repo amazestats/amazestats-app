@@ -13,8 +13,6 @@ import { UserService } from '@services/user.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  private authenticated: boolean = false
-
   private divisions: Division[] = []
   private teams: Team[] = []
 
@@ -26,10 +24,6 @@ export class ToolbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // FIXME: This has to be replaced with a subscription so that the toolbar
-    // authentication info does not become outdated.
-    this.authenticated = this.authService.isAuthenticated()
-
     this.divisionService.getDivisions()
       .subscribe(divisions => this.divisions = divisions)
 

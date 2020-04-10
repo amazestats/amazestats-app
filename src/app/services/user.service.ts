@@ -10,10 +10,7 @@ import { StorageService } from './storage.service'
 })
 export class UserService {
 
-  private userLoggedIn = new Subject<boolean>()
   private userId: number = null
-
-  userLoggedIn$ = this.userLoggedIn.asObservable()
 
   constructor(
     private auth: AuthenticationService,
@@ -32,13 +29,11 @@ export class UserService {
     return this.auth.updateAccessToken(username, password)
       .pipe(tap(res => {
         this.setCurrentUser(res.id)
-        this.userLoggedIn.next(true)
       }))
   }
 
   logout() {
     this.storageService.clearUserDetails()
-    this.userLoggedIn.next(false)
   }
 
   register(username: string, password: string): Observable<any> {
@@ -51,7 +46,6 @@ export class UserService {
       this.auth.updateAccessToken(username, password).subscribe(
         res => {
           this.setCurrentUser(res.id)
-          this.userLoggedIn.next(true)
         },
         err => console.error("Failed to retreive token after registration.", err)
       )

@@ -16,10 +16,12 @@
       routerLink="/divisions/{{division.key}}">{{division.name}}</a>
   </mat-menu>
 
-  <a mat-button *ngIf="!this.authenticated" routerLink="/login">Login</a>
-  <a mat-button *ngIf="!this.authenticated" routerLink="/register">Register</a>
+  <a mat-button *ngIf="!this.authService.isAuthenticated()"
+    routerLink="/login">Login</a>
+  <a mat-button *ngIf="!this.authService.isAuthenticated()"
+    routerLink="/register">Register</a>
 
-  <button mat-button *ngIf="this.authenticated"
+  <button mat-button *ngIf="this.authService.isAuthenticated()"
     [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
