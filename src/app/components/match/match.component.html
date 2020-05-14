@@ -1,5 +1,5 @@
 <p mat-line>
-  <span> {{ this.getTeamNameById(match.homeTeam, teams) }} </span>
+  <span [class]="resultService.getMatchWinner(match) === match.homeTeam ? 'winner' : 'none'"> {{ this.getTeamNameById(match.homeTeam, teams) }} </span>
   {{ matchService.getConcatinatedSets(match.sets) }} 
-  <span> {{ this.getTeamNameById(match.awayTeam, teams) }} </span>
+  <span [class]="resultService.getMatchWinner(match) === match.awayTeam ? 'winner' : 'none'"> {{ this.getTeamNameById(match.awayTeam, teams) }} </span>
   </p>
