@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatchService } from '@services/match.service';
 import { Match } from '@models/match';
-import { Team } from '@models/team'
+import { Team } from '@models/team';
 
 @Component({
   selector: 'app-match',
@@ -13,7 +14,9 @@ export class MatchComponent implements OnInit {
   @Input() teams: Team[]
 
 
-  constructor() { }
+  constructor(
+    private matchService: MatchService,
+  ) { }
 
   ngOnInit() {
   }
@@ -21,5 +24,4 @@ export class MatchComponent implements OnInit {
   getTeamNameById(id: number, teams: Team[]): string {
     return teams.find(team => team.id == id).name
   }
-
 }
