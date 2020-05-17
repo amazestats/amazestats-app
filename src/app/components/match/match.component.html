@@ -1,1 +1,7 @@
-<p>text</p>
+<h4 mat-line>{{ this.getTeamNameById(match.homeTeam, teams) }} -
+    {{ this.getTeamNameById(match.awayTeam, teams) }}</h4>
+  <p mat-line>
+    <span *ngFor="let set of match.sets">
+      {{ set.homeScore }} - {{ set.awayScore }}
+    </span>
+  </p>

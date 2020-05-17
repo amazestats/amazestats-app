@@ -1,13 +1,6 @@
 <mat-list>
   <h3 mat-subheader>Matches</h3>
   <mat-list-item *ngFor="let match of matches">
-    <h4 mat-line>{{ this.getTeamNameById(match.homeTeam, teams) }} -
-      {{ this.getTeamNameById(match.awayTeam, teams) }}</h4>
-    <p mat-line>
-      <span *ngFor="let set of match.sets">
-        {{ set.homeScore }} - {{ set.awayScore }}
-      </span>
-    </p>
-    <mat-divider></mat-divider>
+    <app-match [match]="match" [teams]="teams"></app-match>
   </mat-list-item>
 </mat-list>

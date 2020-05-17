@@ -1,4 +1,6 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Match } from '@models/match';
+import { Team } from '@models/team'
 
 @Component({
   selector: 'app-match',
@@ -7,8 +9,17 @@ import { Component, OnInit, } from '@angular/core';
 })
 export class MatchComponent implements OnInit {
 
+  @Input() match: Match
+  @Input() teams: Team[]
+
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  getTeamNameById(id: number, teams: Team[]): string {
+    return teams.find(team => team.id == id).name
+  }
+
 }
