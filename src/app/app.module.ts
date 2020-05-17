@@ -17,6 +17,7 @@ import {
   MatMenuModule,
   MatIconModule,
   MatSelectModule,
+  MatExpansionModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RegisterComponent } from '@components/register/register.component'
@@ -73,6 +74,7 @@ import { MatchComponent } from './components/match/match.component'
     MatTableModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    MatExpansionModule,
   ],
   providers: [
     {

@@ -1,6 +1,6 @@
 <mat-list>
   <h3 mat-subheader>Matches</h3>
-  <mat-list-item *ngFor="let match of matches">
+  <div class="container" *ngFor="let match of matches">
     <app-match [match]="match" [teams]="teams"></app-match>
-  </mat-list-item>
+  </div>
 </mat-list>

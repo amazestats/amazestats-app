@@ -1,5 +1,16 @@
-<p mat-line>
-  <span [class]="resultService.getMatchWinner(match) === match.homeTeam ? 'winner' : 'none'"> {{ this.getTeamNameById(match.homeTeam, teams) }} </span>
-  {{ matchService.getConcatinatedSets(match.sets) }} 
-  <span [class]="resultService.getMatchWinner(match) === match.awayTeam ? 'winner' : 'none'"> {{ this.getTeamNameById(match.awayTeam, teams) }} </span>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <p mat-line>
+      <span [class]="resultService.getMatchWinner(match) === match.homeTeam ? 'winner' : 'none'">
+        {{ this.getTeamNameById(match.homeTeam, teams) }} </span>
+      {{ matchService.getConcatinatedSets(match.sets) }}
+      <span [class]="resultService.getMatchWinner(match) === match.awayTeam ? 'winner' : 'none'">
+        {{ this.getTeamNameById(match.awayTeam, teams) }} </span>
+    </p>
+  </mat-expansion-panel-header>
+  <p class="panel-body">
+    Sets: <span *ngFor="let set of match.sets">
+      {{ set.homeScore }} - {{ set.awayScore }}
+    </span>
   </p>
+</mat-expansion-panel>
