@@ -30,4 +30,8 @@ export class MatchComponent implements OnInit {
   showReferee(id: number, teams:Team[]): string {
     return id ? this.getTeamNameById(id, teams) : "No referee set"
   }
+
+  isMatchPlayed(match: Match): boolean {
+    return match.sets.length > 0
+  }
 }
