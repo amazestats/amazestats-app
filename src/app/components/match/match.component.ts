@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { MatchService } from '@services/match.service'
 import { ResultService } from '@services/result.service'
+import { AuthenticationService } from '@services/authentication.service'
 import { Match } from '@models/match'
 import { Team } from '@models/team'
 
@@ -18,6 +19,7 @@ export class MatchComponent implements OnInit {
   constructor(
     private matchService: MatchService,
     private resultService: ResultService,
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit() {

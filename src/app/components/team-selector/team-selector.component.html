@@ -1,0 +1,10 @@
+<mat-form-field>
+    <mat-label> {{ this.selectionType }} </mat-label>
+    <mat-select [(value)]="this.selectedTeam"
+    (selectionChange)="setTeam(match, $event.value)">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let team of teams" [value]="team.id">
+            {{team.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

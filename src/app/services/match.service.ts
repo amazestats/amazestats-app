@@ -32,4 +32,9 @@ export class MatchService {
       })
     return homeWinSets + ' - ' + awayWinSets
   }
+
+  setMatchReferee(matchId: number, refereeId: number) {
+    console.debug(`Setting referee: team ${refereeId} to match ${matchId}`)
+    return this.http.put(`/matches/${matchId}/referee`, {id: refereeId}).subscribe()
+  }
 }
