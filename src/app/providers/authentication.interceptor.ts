@@ -24,23 +24,26 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
 
-    let authenticatedRequest: HttpRequest<any> = req
-
     // If the request already provided an authorization header we just pass the
     // request on without tinkering with it.
-    if (req.headers.get('Authorization') == null) {
+    if (req.headers.get('Authorization') != null) {
+      return next.handle(req)
+    }
 
-      let accessToken = this.auth.getAccessToken()
-      if (accessToken !== null)
-        authenticatedRequest = req.clone({
-          setHeaders: {
-            'Authorization': `Bearer ${accessToken}`
-          }
-        })
+    let authenticatedRequest: HttpRequest<any> = req
+    let accessToken = this.auth.getAccessToken()
+    if (accessToken !== null) {
+      authenticatedRequest = req.clone({
+        setHeaders: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      })
     }
 
     return next.handle(authenticatedRequest).pipe(
-      catchError(err => this.handleError(err))
+      catchError(err => {
+        return this.handleError(err)
+      })
     )
   }
 
