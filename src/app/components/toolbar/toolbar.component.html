@@ -1,4 +1,4 @@
-<mat-toolbar color="accent">
+<mat-toolbar color="primary">
   <a class="title" mat-button routerLink="/home">Korpen Volleyboll</a>
 
   <button mat-button [matMenuTriggerFor]="teamMenu">Teams</button>
@@ -17,7 +17,7 @@
   </mat-menu>
 
   <span class="right-align-spacer"></span>
-  
+
   <a mat-button *ngIf="!this.authService.isAuthenticated()"
     routerLink="/login">Login</a>
   <a mat-button *ngIf="!this.authService.isAuthenticated()"
