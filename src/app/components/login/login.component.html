@@ -1,3 +1,5 @@
+<p *ngIf="this.reason" class="reason">{{this.reason}}</p>
+
 <mat-form-field appearance="fill">
   <mat-label>Username</mat-label>
   <input matInput autofocus autocomplete="username" [formControl]="username" />

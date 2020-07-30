@@ -3,6 +3,7 @@ import { UserService } from '@services/user.service'
 import { FormControl } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthenticationService } from '@services/authentication.service'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,23 @@ export class LoginComponent implements OnInit {
   private username = new FormControl('')
   private password = new FormControl('')
 
+  private reason: string = ""
+
   constructor(
     private authService: AuthenticationService,
     private userService: UserService,
     private router: Router,
+    private location: Location,
   ) {
     if (authService.isAuthenticated()) router.navigate(['/'])
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    const state = this.location.getState() as { navigationReason?: string }
+    if (state.hasOwnProperty('navigationReason')) {
+      this.reason = state.navigationReason
+    }
+  }
 
   login() {
     this.userService.login(this.username.value, this.password.value)

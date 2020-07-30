@@ -45,9 +45,14 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   }
 
   private handleError(err: HttpErrorResponse): Observable<any> {
-    if (err.status === 401 || err.status === 403) {
+    if (err.status === 401) {
       this.storageService.clearUserDetails()
-      this.router.navigateByUrl('/login')
+      this.router.navigateByUrl('/login',
+        {
+          state: {
+            navigationReason: 'Your session has expired.'
+          }
+        })
       return of(err.message)
     }
 
