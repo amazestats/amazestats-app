@@ -35,7 +35,7 @@ export class StorageService {
   }
 
   setAccessToken(token: string, expiration: Date) {
-    localStorage.setItem(ACCESS_TOKEN_EXPIRATION, expiration.toLocaleString())
+    localStorage.setItem(ACCESS_TOKEN_EXPIRATION, expiration.toISOString())
     localStorage.setItem(ACCESS_TOKEN_STORAGE, token)
   }
 
