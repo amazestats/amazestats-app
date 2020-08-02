@@ -1,16 +1,28 @@
-<p *ngIf="this.reason" class="reason">{{this.reason}}</p>
+<form (submit)="login()" [formGroup]="loginForm">
 
-<mat-form-field appearance="fill">
-  <mat-label>Username</mat-label>
-  <input matInput autofocus autocomplete="username" [formControl]="username" />
-</mat-form-field>
+  <h2>Log in to Amazestats</h2>
 
-<mat-form-field appearance="fill">
-  <mat-label>Password</mat-label>
-  <input matInput type="password" autocomplete="current-password"
-    [formControl]="password" />
-</mat-form-field>
+  <p *ngIf="this.error" class="error">{{this.error}}</p>
 
-<button mat-raised-button (click)="login()" color="primary">Login</button>
-<p>Not a member? <a mat-button routerLink="/register"
-    color="accent">Register</a></p>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput autofocus autocomplete="username"
+      formControlName="username" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" autocomplete="current-password"
+      formControlName="password" />
+  </mat-form-field>
+
+  <div class="actions">
+    <p>Not a member?<a mat-button routerLink="/register"
+        color="primary">Register</a></p>
+
+    <div>
+      <button mat-raised-button type="submit" color="primary">Log In</button>
+    </div>
+  </div>
+
+</form>

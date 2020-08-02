@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from '@services/user.service'
-import { FormControl } from '@angular/forms'
+import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthenticationService } from '@services/authentication.service'
 import { Location } from '@angular/common'
@@ -12,10 +12,13 @@ import { Location } from '@angular/common'
 })
 export class LoginComponent implements OnInit {
 
-  private username = new FormControl('')
-  private password = new FormControl('')
+  private loginForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
 
-  private reason: string = ""
+  })
+
+  private error: string = ""
 
   constructor(
     private authService: AuthenticationService,
@@ -29,20 +32,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     const state = this.location.getState() as { navigationReason?: string }
     if (state.hasOwnProperty('navigationReason')) {
-      this.reason = state.navigationReason
+      this.error = state.navigationReason
     }
   }
 
   login() {
-    this.userService.login(this.username.value, this.password.value)
-      .subscribe(res => {
-        console.info(`Successfully logged in ${this.username.value}.`)
-        console.info(`Received token: ${res.token}`)
-        this.router.navigate(['/home'])
-      }, error => {
-        console.error('Could not login.', error)
-        this.password.setValue('')
-      })
+    const username = this.loginForm.controls['username'].value
+    const password = this.loginForm.controls['password'].value
+    this.userService.login(username, password)
+      .subscribe(
+        res => this.router.navigate(['/home']),
+        error => {
+          this.loginForm.patchValue({ password: '' })
+          this.error = 'Username and password does not match.'
+        })
   }
 
 }

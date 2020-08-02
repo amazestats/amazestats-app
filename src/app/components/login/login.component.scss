@@ -1,3 +1,43 @@
-.reason {
-    color: red;
+@import '~@angular/material/theming';
+@import 'variables';
+
+.error {
+    background-color: mat-color($warn);
+    color: white;
+
+    padding: 15px;
+}
+
+form {
+    margin: 100px auto;
+    max-width: 500px;
+}
+
+h2 {
+    font-weight: normal;
+}
+
+
+.mat-form-field {
+    display: block;
+}
+
+.actions > p, .actions > div {
+    display: inline-block;
+
+}
+
+.actions > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-button {
+    padding: 0;
 }
