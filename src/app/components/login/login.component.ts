@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         res => this.router.navigate(['/home']),
         error => {
           this.loginForm.patchValue({ password: '' })
-          this.error = 'Username and password does not match.'
+          this.error = 'Username or password is incorrect.'
         })
   }
 
