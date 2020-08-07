@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Match, MatchRes } from '@models/match'
+import { Set } from '@models/set'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -20,5 +21,15 @@ export class MatchService {
     return this.http.get<{ matches: MatchRes[] }>(`/seasons/${season}/matches`)
       .pipe(map(res => res.matches.map(match => new Match(match))))
 
+  }
+
+  getConcatinatedSets(sets: Set[]): string {
+    let homeWinSets: number = 0;
+    let awayWinSets: number = 0;
+    sets.forEach(
+      set => {
+        set.homeScore > set.awayScore ? homeWinSets++ : awayWinSets++
+      });
+      return homeWinSets + " - " + awayWinSets
   }
 }

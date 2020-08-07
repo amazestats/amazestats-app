@@ -17,6 +17,7 @@ import {
   MatMenuModule,
   MatIconModule,
   MatSelectModule,
+  MatExpansionModule,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RegisterComponent } from '@components/register/register.component'
@@ -33,7 +34,8 @@ import { TeamDetailComponent } from '@components/team-detail/team-detail.compone
 import { AuthenticationInterceptor } from '@providers/authentication.interceptor';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { SeasonSelectorComponent } from './components/season-selector/season-selector.component'
+import { SeasonSelectorComponent } from './components/season-selector/season-selector.component';
+import { MatchComponent } from './components/match/match.component'
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { SeasonSelectorComponent } from './components/season-selector/season-sel
     ToolbarComponent,
     SettingsComponent,
     SeasonSelectorComponent,
+    MatchComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { SeasonSelectorComponent } from './components/season-selector/season-sel
     MatTableModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    MatExpansionModule,
   ],
   providers: [
     {
