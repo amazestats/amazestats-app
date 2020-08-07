@@ -3,8 +3,9 @@
     <mat-select [(value)]="this.selectedTeam"
     (selectionChange)="setTeam(match, $event.value)">
         <mat-option>None</mat-option>
-        <mat-option *ngFor="let team of teams" [value]="team.id">
-            {{team.name}}
+        <mat-option *ngFor="let team of teams" [value]="team.id"
+        [disabled]="isTeamPlaying(team.id, this.match)">
+        {{team.name}}
         </mat-option>
     </mat-select>
 </mat-form-field>

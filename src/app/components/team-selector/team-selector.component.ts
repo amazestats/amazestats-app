@@ -26,4 +26,8 @@ export class TeamSelectorComponent implements OnInit {
     types of setting teams */
     this.matchService.setMatchReferee(match.id, team)
   }
+
+  isTeamPlaying(teamId: number, match: Match) {
+    return teamId == match.awayTeam || teamId == match.homeTeam
+  }
 }
