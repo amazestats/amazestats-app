@@ -16,6 +16,8 @@ export class ToolbarComponent implements OnInit {
   private divisions: Division[] = []
   private teams: Team[] = []
 
+  private isAuthenticated = false
+
   constructor(
     private authService: AuthenticationService,
     private divisionService: DivisionService,
@@ -29,8 +31,13 @@ export class ToolbarComponent implements OnInit {
 
     this.teamService.getTeams()
       .subscribe(teams => this.teams = teams)
-  }
 
+    this.authService.isAuthenticated().subscribe(
+      isAuthenticated => {
+        this.isAuthenticated = isAuthenticated
+      }
+    )
+  }
 
   getTeamsInDivision(divisionId: number) {
     return this.teams.filter(team => team.division == divisionId)

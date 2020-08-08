@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, } from 'rxjs';
+import { Observable, BehaviorSubject, } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { StorageService } from './storage.service';
 
@@ -9,13 +9,26 @@ import { StorageService } from './storage.service';
 })
 export class AuthenticationService {
 
+  private user = new BehaviorSubject<boolean>(false)
+  private isLoggedIn = this.user.asObservable()
+
   constructor(
     private http: HttpClient,
     private storageService: StorageService,
-  ) { }
+  ) {
+    /**
+     * Make sure that we are up-to-date with information from previous
+     * sessions.
+     */
+    this.user.next(this.storageService.hasValidAccessToken())
+  }
 
-  isAuthenticated(): boolean {
-    return this.storageService.hasValidAccessToken()
+  setAuthenticatedStatus(status: boolean) {
+    this.user.next(status)
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    return this.isLoggedIn
   }
 
   getAccessToken(): string {

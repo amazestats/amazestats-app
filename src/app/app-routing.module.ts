@@ -12,11 +12,20 @@ import { DivisionTeamListComponent } from '@components/division-team-list/divisi
 import { TeamDetailComponent } from '@components/team-detail/team-detail.component'
 import { SettingsComponent } from '@components/settings/settings.component'
 import { AuthenticationGuard } from './guards/authentication.guard'
+import { AuthenticationResolver } from './resolvers/authentication.resolver'
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, },
+  {
+    path: 'login',
+    component: LoginComponent,
+    resolve: { isAuthenticated: AuthenticationResolver },
+  },
   { path: 'home', component: HomeComponent, },
-  { path: 'register', component: RegisterComponent, },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    resolve: { isAuthenticated: AuthenticationResolver },
+  },
   { path: 'teams', component: TeamListComponent, },
   { path: 'teams/:key', component: TeamDetailComponent, },
   { path: 'divisions', component: DivisionListComponent, },

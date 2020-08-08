@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from '@services/user.service'
 import { FormControl } from '@angular/forms'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { AuthenticationService } from '@services/authentication.service'
 
 @Component({
@@ -13,16 +13,25 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
+    private activatedRoute: ActivatedRoute,
     private userService: UserService,
-    private router: Router
-  ) {
-    if (authService.isAuthenticated()) router.navigate(['/'])
-  }
+    private router: Router,
+  ) { }
 
   private username = new FormControl('')
   private password = new FormControl('')
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    this.activatedRoute.data.subscribe(
+      data => {
+        if (data.isAuthenticated) {
+          this.router.navigate(['/'])
+        }
+      }
+    )
+
+  }
 
   register() {
     this.userService.register(this.username.value, this.password.value)
