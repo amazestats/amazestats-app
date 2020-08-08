@@ -17,7 +17,7 @@ export class UrlInterceptor implements HttpInterceptor {
     next: HttpHandler,
   ): Observable<HttpEvent<any>> {
     let url = `${this.url}${req.url}`
-    console.debug(`Sending request: ${url}`)
+    console.debug(`Sending request: ${req.method} ${url}`)
     return next.handle(req.clone({
       url: url
     }))
