@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { UserService } from '@services/user.service'
 import { FormControl, FormGroup } from '@angular/forms'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { AuthenticationService } from '@services/authentication.service'
 import { Location } from '@angular/common'
 
@@ -25,11 +25,20 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private location: Location,
-  ) {
-    if (authService.isAuthenticated()) router.navigate(['/'])
-  }
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+
+    this.activatedRoute.data.subscribe(
+      data => {
+        if (data.isAuthenticated) {
+          this.router.navigate(['/'])
+        }
+      }
+    )
+
+
     const state = this.location.getState() as { navigationReason?: string }
     if (state.hasOwnProperty('navigationReason')) {
       this.error = state.navigationReason

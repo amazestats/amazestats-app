@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Observable, Subject } from 'rxjs'
-import { tap, map } from 'rxjs/operators'
+import { tap, map, catchError } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { AuthenticationService } from './authentication.service'
 import { StorageService } from './storage.service'
@@ -30,11 +30,14 @@ export class UserService {
     return this.auth.updateAccessToken(username, password)
       .pipe(tap(res => {
         this.setCurrentUser(res.id)
+        this.auth.setAuthenticatedStatus(true)
       }))
   }
 
   logout() {
     this.storageService.clearUserDetails()
+    this.auth.setAuthenticatedStatus(false)
+    this.userId = null
   }
 
   register(username: string, password: string): Observable<any> {

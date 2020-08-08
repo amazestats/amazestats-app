@@ -19,13 +19,17 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.authService.isAuthenticated()) {
-      this.userService.getUser(this.userService.getCurrentUser())
-        .subscribe(user => {
-          this.authenticated = true
-          this.user = user
-        })
-    }
+    this.authService.isAuthenticated().subscribe(
+      isAuthenticated => {
+        if (isAuthenticated) {
+          this.userService.getUser(this.userService.getCurrentUser())
+            .subscribe(user => {
+              this.authenticated = true
+              this.user = user
+            })
+        }
+      }
+    )
   }
 
 }
