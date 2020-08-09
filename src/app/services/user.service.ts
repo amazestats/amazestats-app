@@ -6,6 +6,7 @@ import { AuthenticationService } from './authentication.service'
 import { StorageService } from './storage.service'
 import { User } from '@models/user'
 import { CompetitionService } from './competition.service'
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class UserService {
     private competitionService: CompetitionService,
     private http: HttpClient,
     private storageService: StorageService,
+    private router: Router,
   ) {
     try {
       this.userId = this.storageService.getCurrentUser()
@@ -40,6 +42,7 @@ export class UserService {
     this.storageService.clearUserDetails()
     this.auth.setAuthenticatedStatus(false)
     this.userId = null
+    this.router.navigate(['/home'])
   }
 
   register(username: string, password: string): Observable<any> {
