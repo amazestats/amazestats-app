@@ -5,11 +5,11 @@ import {
   HttpEvent,
   HttpErrorResponse
 } from '@angular/common/http'
-import { Observable, of, throwError } from 'rxjs';
-import { AuthenticationService } from '@services/authentication.service';
-import { Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { StorageService } from '@services/storage.service';
+import { Observable, of, throwError } from 'rxjs'
+import { AuthenticationService } from '@services/authentication.service'
+import { Router } from '@angular/router'
+import { catchError } from 'rxjs/operators'
+import { StorageService } from '@services/storage.service'
 
 export class AuthenticationInterceptor implements HttpInterceptor {
 
@@ -31,11 +31,11 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     }
 
     let authenticatedRequest: HttpRequest<any> = req
-    let accessToken = this.auth.getAccessToken()
+    const accessToken = this.auth.getAccessToken()
     if (accessToken !== null) {
       authenticatedRequest = req.clone({
         setHeaders: {
-          'Authorization': `Bearer ${accessToken}`
+          Authorization: `Bearer ${accessToken}`
         }
       })
     }

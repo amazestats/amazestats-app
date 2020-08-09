@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 
 const ACCESS_TOKEN_STORAGE = 'TOKEN'
 const ACCESS_TOKEN_EXPIRATION = 'EXPIRE'
@@ -12,9 +12,9 @@ export class StorageService {
   constructor() { }
 
   clearUserDetails() {
-    localStorage.setItem(ACCESS_TOKEN_EXPIRATION, "")
-    localStorage.setItem(ACCESS_TOKEN_STORAGE, "")
-    localStorage.setItem(USER_ID_STORAGE, "")
+    localStorage.setItem(ACCESS_TOKEN_EXPIRATION, '')
+    localStorage.setItem(ACCESS_TOKEN_STORAGE, '')
+    localStorage.setItem(USER_ID_STORAGE, '')
   }
 
   getAccessTokenExpiration(): Date {
@@ -30,8 +30,8 @@ export class StorageService {
       return false
     }
 
-    let token = this.getAccessToken()
-    return token != null && token != ""
+    const token = this.getAccessToken()
+    return token != null && token != ''
   }
 
   setAccessToken(token: string, expiration: Date) {
@@ -40,12 +40,12 @@ export class StorageService {
   }
 
   getCurrentUser(): number {
-    let userId = localStorage.getItem(USER_ID_STORAGE)
+    const userId = localStorage.getItem(USER_ID_STORAGE)
     if (this.isValidNumber(userId)) {
       return Number(userId)
     }
 
-    throw Error("No user ID in storage.")
+    throw Error('No user ID in storage.')
   }
 
   setCurrentUser(userId: number) {
@@ -53,6 +53,6 @@ export class StorageService {
   }
 
   private isValidNumber(num: string): boolean {
-    return num != null && num !== "" && !Number.isNaN(Number(num))
+    return num != null && num !== '' && !Number.isNaN(Number(num))
   }
 }

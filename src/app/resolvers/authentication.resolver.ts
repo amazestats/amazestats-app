@@ -1,6 +1,6 @@
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthenticationService } from '@services/authentication.service';
-import { Injectable } from '@angular/core';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
+import { AuthenticationService } from '@services/authentication.service'
+import { Injectable } from '@angular/core'
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationResolver implements Resolve<boolean> {

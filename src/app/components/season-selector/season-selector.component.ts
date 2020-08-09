@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { Season } from '@models/season';
-import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core'
+import { Season } from '@models/season'
+import { EventEmitter } from '@angular/core'
 
 @Component({
   selector: 'app-season-selector',

@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
         err => {
           console.error(err)
         },
-        () => console.log("Register call completed.")
+        () => console.log('Register call completed.')
 
       )
   }

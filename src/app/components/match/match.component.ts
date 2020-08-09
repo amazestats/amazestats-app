@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatchService } from '@services/match.service';
-import { ResultService } from '@services/result.service';
-import { Match } from '@models/match';
-import { Team } from '@models/team';
+import { Component, OnInit, Input } from '@angular/core'
+import { MatchService } from '@services/match.service'
+import { ResultService } from '@services/result.service'
+import { Match } from '@models/match'
+import { Team } from '@models/team'
 
 @Component({
   selector: 'app-match',
@@ -27,8 +27,8 @@ export class MatchComponent implements OnInit {
     return teams.find(team => team.id == id).name
   }
 
-  showReferee(id: number, teams:Team[]): string {
-    return id ? this.getTeamNameById(id, teams) : "No referee set"
+  showReferee(id: number, teams: Team[]): string {
+    return id ? this.getTeamNameById(id, teams) : 'No referee set'
   }
 
   isMatchPlayed(match: Match): boolean {
