@@ -14,19 +14,19 @@ export class ResultService {
     return matches.filter(
       match =>
         match.sets.length > 0 &&
-        (match.awayTeam == team.id ||
-          match.homeTeam == team.id))
+        (match.awayTeam === team.id ||
+          match.homeTeam === team.id))
   }
 
   getMatchesWon(team: Team, matches: Match[]): Match[] {
     return this.getMatchesPlayed(team, matches)
-      .filter(match => this.getMatchWinner(match) == team.id)
+      .filter(match => this.getMatchWinner(match) === team.id)
   }
 
   getMatchesLost(team: Team, matches: Match[]): Match[] {
     return this.getMatchesPlayed(team, matches)
       .filter(matchPlayed => this.getMatchesWon(team, matches)
-        .find(matchWon => matchWon.id == matchPlayed.id) == undefined)
+        .find(matchWon => matchWon.id === matchPlayed.id) === undefined)
   }
 
   getMatchWinner(match: Match): number {
@@ -54,8 +54,8 @@ export class ResultService {
     matches.forEach(match => {
       match.sets.forEach(set => {
         const winner = this.getSetWinner(set)
-        if (winner == 1 && match.homeTeam == team.id ||
-          winner == -1 && match.awayTeam == team.id) {
+        if (winner === 1 && match.homeTeam === team.id ||
+          winner === -1 && match.awayTeam === team.id) {
           count++
         }
       })

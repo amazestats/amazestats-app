@@ -31,7 +31,7 @@ export class StorageService {
     }
 
     const token = this.getAccessToken()
-    return token != null && token != ''
+    return token != null && token !== ''
   }
 
   setAccessToken(token: string, expiration: Date) {

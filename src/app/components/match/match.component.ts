@@ -24,7 +24,7 @@ export class MatchComponent implements OnInit {
   }
 
   getTeamNameById(id: number, teams: Team[]): string {
-    return teams.find(team => team.id == id).name
+    return teams.find(t => t.id === id).name
   }
 
   showReferee(id: number, teams: Team[]): string {

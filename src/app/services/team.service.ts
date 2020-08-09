@@ -43,8 +43,8 @@ export class TeamService {
 
     return this.seasonService.getSeasonById(season)
       .pipe(
-        flatMap(season => {
-          const teamsInSeason = this.teamsFromMatches(season.matches)
+        flatMap(s => {
+          const teamsInSeason = this.teamsFromMatches(s.matches)
 
           return this.getTeams()
             .pipe(map(teams => teams.filter(
