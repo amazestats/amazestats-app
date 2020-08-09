@@ -74,7 +74,7 @@ export class DivisionTableComponent implements OnInit {
             // If we have a query parameter for season we use it
             const season = route.queryParams.season == null ?
               division.seasons[0].id : division.seasons.find(
-                season => season.key === route.queryParams.season).id
+                s => s.key === route.queryParams.season).id
 
             this.seasonChanged(season)
           })
@@ -87,8 +87,8 @@ export class DivisionTableComponent implements OnInit {
       this.teams.map(team => {
         const matches = this.matches
           .filter(match =>
-            match.homeTeam == team.id ||
-            match.awayTeam == team.id)
+            match.homeTeam === team.id ||
+            match.awayTeam === team.id)
         const matchesWon =
           this.resultService.getMatchesWon(team, matches).length
 
@@ -112,9 +112,9 @@ export class DivisionTableComponent implements OnInit {
 
   seasonChanged(season: number) {
     this.seasonService.getSeasonById(season)
-      .subscribe(season => {
-        this.season = season
-        this.updateQuery(season.key)
+      .subscribe(s => {
+        this.season = s
+        this.updateQuery(s.key)
       })
 
     const teams$ = this.teamService.getTeamsBySeason(season)

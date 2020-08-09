@@ -40,7 +40,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   getTeamsInDivision(divisionId: number) {
-    return this.teams.filter(team => team.division == divisionId)
+    return this.teams.filter(team => team.division === divisionId)
   }
 
   logout() {
