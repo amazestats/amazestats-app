@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '@services/authentication.service';
-import { TeamService } from '@services/team.service';
-import { DivisionService } from '@services/division.service';
-import { Division } from '@models/division';
-import { Team } from '@models/team';
-import { UserService } from '@services/user.service';
+import { Component, OnInit } from '@angular/core'
+import { AuthenticationService } from '@services/authentication.service'
+import { TeamService } from '@services/team.service'
+import { DivisionService } from '@services/division.service'
+import { Division } from '@models/division'
+import { Team } from '@models/team'
+import { UserService } from '@services/user.service'
 
 @Component({
   selector: 'app-toolbar',

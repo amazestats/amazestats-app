@@ -38,13 +38,13 @@ export class TeamService {
   }
 
   getTeamsBySeason(season: number): Observable<Team[]> {
-    console.warn("Using workaround!",
-      "Getting teams by matches instead of API call.")
+    console.warn('Using workaround!',
+      'Getting teams by matches instead of API call.')
 
     return this.seasonService.getSeasonById(season)
       .pipe(
         flatMap(season => {
-          let teamsInSeason = this.teamsFromMatches(season.matches)
+          const teamsInSeason = this.teamsFromMatches(season.matches)
 
           return this.getTeams()
             .pipe(map(teams => teams.filter(

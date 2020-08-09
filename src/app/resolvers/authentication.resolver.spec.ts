@@ -1,7 +1,7 @@
-import { AuthenticationResolver } from './authentication.resolver';
+import { AuthenticationResolver } from './authentication.resolver'
 
 describe('AuthenticationResolver', () => {
   it('should create an instance', () => {
-    expect(new AuthenticationResolver()).toBeTruthy();
-  });
-});
+    expect(new AuthenticationResolver()).toBeTruthy()
+  })
+})

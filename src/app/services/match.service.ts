@@ -24,12 +24,12 @@ export class MatchService {
   }
 
   getConcatinatedSets(sets: Set[]): string {
-    let homeWinSets: number = 0;
-    let awayWinSets: number = 0;
+    let homeWinSets = 0
+    let awayWinSets = 0
     sets.forEach(
       set => {
         set.homeScore > set.awayScore ? homeWinSets++ : awayWinSets++
-      });
-      return homeWinSets + " - " + awayWinSets
+      })
+    return homeWinSets + ' - ' + awayWinSets
   }
 }

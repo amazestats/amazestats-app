@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   })
 
-  private error: string = ""
+  private error = ''
 
   constructor(
     private authService: AuthenticationService,
@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const username = this.loginForm.controls['username'].value
-    const password = this.loginForm.controls['password'].value
+    const username = this.loginForm.controls.username.value
+    const password = this.loginForm.controls.password.value
     this.userService.login(username, password)
       .subscribe(
         res => this.router.navigate(['/home']),

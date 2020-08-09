@@ -43,7 +43,7 @@ export class UserService {
   register(username: string, password: string): Observable<any> {
     return this.http.post('/users', {
       alias: username,
-      password: password,
+      password,
     }).pipe(tap(_ => {
       // We have to save the token, otherwise the user would be forced to log
       // in as well after the registration to get the token.
@@ -51,7 +51,7 @@ export class UserService {
         res => {
           this.setCurrentUser(res.id)
         },
-        err => console.error("Failed to retreive token after registration.", err)
+        err => console.error('Failed to retreive token after registration.', err)
       )
     }))
   }

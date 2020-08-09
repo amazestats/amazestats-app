@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { StorageService } from './storage.service';
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable, BehaviorSubject, } from 'rxjs'
+import { tap } from 'rxjs/operators'
+import { StorageService } from './storage.service'
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +46,7 @@ export class AuthenticationService {
     }).pipe(tap(res => {
       this.storageService.setAccessToken(
         res.token,
-        new Date(res["expiration-date"]))
+        new Date(res['expiration-date']))
     }))
   }
 

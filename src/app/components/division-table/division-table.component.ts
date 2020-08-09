@@ -72,7 +72,7 @@ export class DivisionTableComponent implements OnInit {
             this.seasons = division.seasons
 
             // If we have a query parameter for season we use it
-            let season = route.queryParams.season == null ?
+            const season = route.queryParams.season == null ?
               division.seasons[0].id : division.seasons.find(
                 season => season.key === route.queryParams.season).id
 
