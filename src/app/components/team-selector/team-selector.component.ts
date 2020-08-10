@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatchService } from '@services/match.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Team } from '@models/team';
 import { Match } from '@models/match';
 
@@ -14,17 +13,15 @@ export class TeamSelectorComponent implements OnInit {
   @Input() match: Match
   @Input() selectedTeam: number
 
-  constructor(
-    private matchService: MatchService,
-  ) { }
+  @Output() selectedTeamEvent = new EventEmitter<number>()
+
+  constructor( ) { }
 
   ngOnInit() {
   }
 
-  setTeam(match: Match, team: number) {
-    /* This method will have to be changed to accomodate different
-    types of setting teams */
-    this.matchService.setMatchReferee(match.id, team)
+  setTeam(team: number) {
+    this.selectedTeamEvent.emit(team)
   }
 
   isTeamPlaying(teamId: number, match: Match) {

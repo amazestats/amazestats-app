@@ -26,6 +26,7 @@
   <span *ngIf="authService.isAuthenticated()">
     Referee:
     <app-team-selector [teams]="teams" [match]="match"
-    [selectedTeam]="match.referee"></app-team-selector>
+    [selectedTeam]="match.referee"
+    (selectedTeamEvent)="setReferee($event, match)"></app-team-selector>
   </span>
 </mat-expansion-panel>

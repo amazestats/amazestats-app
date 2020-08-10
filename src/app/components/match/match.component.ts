@@ -36,4 +36,8 @@ export class MatchComponent implements OnInit {
   isMatchPlayed(match: Match): boolean {
     return match.sets.length > 0
   }
+
+  setReferee(newReferee: number, match: Match) {
+    this.matchService.setMatchReferee(match.id, newReferee)
+  }
 }
