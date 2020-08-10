@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Team } from '@models/team';
-import { Match } from '@models/match';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { Team } from '@models/team'
+import { Match } from '@models/match'
 
 @Component({
   selector: 'app-team-selector',
@@ -25,6 +25,6 @@ export class TeamSelectorComponent implements OnInit {
   }
 
   isTeamPlaying(teamId: number, match: Match) {
-    return teamId == match.awayTeam || teamId == match.homeTeam
+    return teamId === match.awayTeam || teamId === match.homeTeam
   }
 }
