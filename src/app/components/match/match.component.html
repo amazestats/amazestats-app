@@ -1,13 +1,13 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
-    <p mat-line  *ngIf = "isMatchPlayed(match)">
+    <p mat-line *ngIf="isMatchPlayed(match)">
       <span [class]="resultService.getMatchWinner(match) === match.homeTeam ? 'winner' : 'none'">
         {{ this.getTeamNameById(match.homeTeam, teams) }} </span>
       <span>{{ matchService.getConcatinatedSets(match.sets) }}</span>
       <span [class]="resultService.getMatchWinner(match) === match.awayTeam ? 'winner' : 'none'">
         {{ this.getTeamNameById(match.awayTeam, teams) }} </span>
     </p>
-    <p mat-line  *ngIf = "!isMatchPlayed(match)">
+    <p mat-line *ngIf="!isMatchPlayed(match)">
       <span class="none">
         {{ this.getTeamNameById(match.homeTeam, teams) }} </span>
       <span> vs </span>
@@ -15,12 +15,18 @@
         {{ this.getTeamNameById(match.awayTeam, teams) }} </span>
     </p>
   </mat-expansion-panel-header>
-  <p class="panel-body" *ngIf = "isMatchPlayed(match)">
+  <p class="panel-body" *ngIf="isMatchPlayed(match)">
     Sets: <span *ngFor="let set of match.sets">
       {{ set.homeScore }} - {{ set.awayScore }}
     </span>
   </p>
-  <p class="panel-body">
+  <p class="panel-body" *ngIf="!authService.isAuthenticated()">
     Referee: {{ this.showReferee(match.referee, teams) }}
   </p>
+  <span *ngIf="authService.isAuthenticated()">
+    Referee:
+    <app-team-selector [teams]="teams" [match]="match"
+    [selectedTeam]="match.referee"
+    (selectedTeamEvent)="setReferee($event, match)"></app-team-selector>
+  </span>
 </mat-expansion-panel>
