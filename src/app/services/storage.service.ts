@@ -41,7 +41,7 @@ export class StorageService {
 
   getCurrentUser(): number {
     const userId = localStorage.getItem(USER_ID_STORAGE)
-    if (this.isValidNumber(userId)) {
+    if (this.isValidNumber(userId) && this.hasValidAccessToken()) {
       return Number(userId)
     }
 
