@@ -50,6 +50,7 @@ export class UserService {
       this.auth.updateAccessToken(username, password).subscribe(
         res => {
           this.setCurrentUser(res.id)
+          this.auth.setAuthenticatedStatus(true)
         },
         err => console.error('Failed to retreive token after registration.', err)
       )
