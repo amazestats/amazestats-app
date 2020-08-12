@@ -13,6 +13,7 @@ import { TeamDetailComponent } from '@components/team-detail/team-detail.compone
 import { SettingsComponent } from '@components/settings/settings.component'
 import { AuthenticationGuard } from './guards/authentication.guard'
 import { AuthenticationResolver } from './resolvers/authentication.resolver'
+import { PageNotFoundComponent } from '@components/page-not-found/page-not-found.component'
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
   },
   { path: '', redirectTo: '/home', pathMatch: 'full', },
+  { path: '**', component: PageNotFoundComponent, },
 ]
 
 @NgModule({

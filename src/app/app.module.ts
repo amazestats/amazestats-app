@@ -37,6 +37,7 @@ import { SettingsComponent } from './components/settings/settings.component'
 import { SeasonSelectorComponent } from './components/season-selector/season-selector.component'
 import { MatchComponent } from './components/match/match.component'
 import { TeamSelectorComponent } from './components/team-selector/team-selector.component'
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { TeamSelectorComponent } from './components/team-selector/team-selector.
     SeasonSelectorComponent,
     MatchComponent,
     TeamSelectorComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
