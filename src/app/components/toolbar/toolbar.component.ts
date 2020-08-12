@@ -17,6 +17,7 @@ export class ToolbarComponent implements OnInit {
   private teams: Team[] = []
 
   private isAuthenticated = false
+  private isAdmin = false
 
   constructor(
     private authService: AuthenticationService,
@@ -35,6 +36,12 @@ export class ToolbarComponent implements OnInit {
     this.authService.isAuthenticated().subscribe(
       isAuthenticated => {
         this.isAuthenticated = isAuthenticated
+
+        // Trigger isAdmin as well, to get updated information about
+        // the user's privileges
+        this.userService.isAdmin().subscribe(
+          isAdmin => this.isAdmin = isAdmin
+        )
       }
     )
   }

@@ -13,6 +13,8 @@ import { TeamDetailComponent } from '@components/team-detail/team-detail.compone
 import { SettingsComponent } from '@components/settings/settings.component'
 import { AuthenticationGuard } from './guards/authentication.guard'
 import { AuthenticationResolver } from './resolvers/authentication.resolver'
+import { AdminPanelComponent } from '@components/admin-panel/admin-panel.component'
+import { AdminGuard } from './guards/admin.guard'
 import { PageNotFoundComponent } from '@components/page-not-found/page-not-found.component'
 
 const routes: Routes = [
@@ -44,6 +46,15 @@ const routes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     canActivate: [AuthenticationGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminPanelComponent,
+    canActivate: [AdminGuard],
+    canActivateChild: [AdminGuard],
+    loadChildren: () => import('./admin/admin.module').then(
+      m => m.AdminModule
+    )
   },
   { path: '', redirectTo: '/home', pathMatch: 'full', },
   { path: '**', component: PageNotFoundComponent, },

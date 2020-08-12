@@ -30,13 +30,16 @@ import { MatchListComponent } from '@components/match-list/match-list.component'
 import { DivisionTableComponent } from '@components/division-table/division-table.component'
 import { DivisionMatchListComponent } from '@components/division-match-list/division-match-list.component'
 import { DivisionTeamListComponent } from '@components/division-team-list/division-team-list.component'
-import { TeamDetailComponent } from '@components/team-detail/team-detail.component'
-import { AuthenticationInterceptor } from '@providers/authentication.interceptor'
-import { ToolbarComponent } from './components/toolbar/toolbar.component'
-import { SettingsComponent } from './components/settings/settings.component'
-import { SeasonSelectorComponent } from './components/season-selector/season-selector.component'
-import { MatchComponent } from './components/match/match.component'
+import { TeamDetailComponent } from '@components/team-detail/team-detail.component';
+import { AuthenticationInterceptor } from '@providers/authentication.interceptor';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { SeasonSelectorComponent } from './components/season-selector/season-selector.component';
+import { MatchComponent } from './components/match/match.component';
 import { TeamSelectorComponent } from './components/team-selector/team-selector.component'
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SidenavItemComponent } from './components/sidenav-item/sidenav-item.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 
 @NgModule({
@@ -60,6 +63,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SeasonSelectorComponent,
     MatchComponent,
     TeamSelectorComponent,
+    AdminPanelComponent,
+    SidenavComponent,
+    SidenavItemComponent,
     PageNotFoundComponent,
   ],
   imports: [

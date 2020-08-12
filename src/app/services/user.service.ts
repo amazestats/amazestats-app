@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http'
 import { AuthenticationService } from './authentication.service'
 import { StorageService } from './storage.service'
 import { User } from '@models/user'
+import { CompetitionService } from './competition.service'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class UserService {
 
   constructor(
     private auth: AuthenticationService,
+    private competitionService: CompetitionService,
     private http: HttpClient,
     private storageService: StorageService,
   ) {
@@ -69,6 +71,17 @@ export class UserService {
   getUser(userId: number): Observable<User> {
     return this.http.get<{ user: User }>(`/users/${userId}`)
       .pipe(map(res => res.user))
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.competitionService.getAdmins()
+      .pipe(map(
+        admins => {
+          return admins.filter(
+            admin => admin.id === this.userId
+          ).length > 0
+        }
+      ))
   }
 
 }
