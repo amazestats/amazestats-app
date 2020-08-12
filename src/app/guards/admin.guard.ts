@@ -4,12 +4,12 @@ import {
   RouterStateSnapshot,
   CanActivateChild,
   Router,
-} from '@angular/router';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { UserService } from '@services/user.service';
-import { map, flatMap, switchMap, tap } from 'rxjs/operators';
-import { AuthenticationService } from '@services/authentication.service';
+} from '@angular/router'
+import { Injectable } from '@angular/core'
+import { Observable, of } from 'rxjs'
+import { UserService } from '@services/user.service'
+import { map, flatMap, switchMap, tap } from 'rxjs/operators'
+import { AuthenticationService } from '@services/authentication.service'
 
 @Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanActivate, CanActivateChild {
@@ -26,7 +26,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
   ): Observable<boolean> {
     return this.userService.isAdmin().pipe(
       flatMap(isAdmin => {
-        if (isAdmin) return of(true)
+        if (isAdmin) { return of(true) }
 
         return this.authService.isAuthenticated().pipe(
           tap(isAuthenticated => {

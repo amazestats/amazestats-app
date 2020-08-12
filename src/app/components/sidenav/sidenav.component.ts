@@ -1,5 +1,5 @@
-import { Component, OnInit, ContentChildren, QueryList } from '@angular/core';
-import { SidenavItemComponent } from '@components/sidenav-item/sidenav-item.component';
+import { Component, OnInit, ContentChildren, QueryList } from '@angular/core'
+import { SidenavItemComponent } from '@components/sidenav-item/sidenav-item.component'
 
 @Component({
   selector: 'app-sidenav',

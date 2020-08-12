@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
-import { AdminRoutingModule } from './admin-routing.module';
-import { TeamManagementComponent } from '@components/team-management/team-management.component';
-import { UserPermissionManagementComponent } from '@components/user-permission-management/user-permission-management.component';
-import { RuleManagementComponent } from '@components/rule-management/rule-management.component';
+import { AdminRoutingModule } from './admin-routing.module'
+import { TeamManagementComponent } from '@components/team-management/team-management.component'
+import { UserPermissionManagementComponent } from '@components/user-permission-management/user-permission-management.component'
+import { RuleManagementComponent } from '@components/rule-management/rule-management.component'
 
 @NgModule({
   declarations: [
