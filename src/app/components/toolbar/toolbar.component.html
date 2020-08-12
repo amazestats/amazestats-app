@@ -22,6 +22,10 @@
   <a mat-button *ngIf="!this.isAuthenticated"
     routerLink="/register">Register</a>
 
+  <button mat-button *ngIf="this.isAdmin" [routerLink]="'/admin'">
+    <mat-icon>settings</mat-icon>
+  </button>
+
   <button mat-button *ngIf="this.isAuthenticated"
     [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>

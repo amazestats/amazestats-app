@@ -1,0 +1,16 @@
+<div class="container">
+  <app-sidenav>
+    <app-sidenav-item [text]="'User Permissions'"
+      [component]="'admin/user-permissions'">
+      <mat-icon>person</mat-icon>
+    </app-sidenav-item>
+    <app-sidenav-item [text]="'Team Management'" [component]="'admin/teams'">
+      <mat-icon>group</mat-icon>
+    </app-sidenav-item>
+    <app-sidenav-item [text]="'Rule Management'" [component]="'admin/rules'">
+      <mat-icon>sports_volleyball</mat-icon>
+    </app-sidenav-item>
+  </app-sidenav>
+
+  <router-outlet></router-outlet>
+</div>
