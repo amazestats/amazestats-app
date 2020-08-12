@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let child of children">
+    <ng-container *ngTemplateOutlet="child.template"></ng-container>
+  </li>
+</ul>

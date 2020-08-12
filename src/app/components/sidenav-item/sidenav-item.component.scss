@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+@import 'variables';
+
+a {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+
+    text-decoration: none;
+    color: black;
+
+    & > span {
+        margin: auto 15px;
+    }
+
+    &:hover {
+        background-color: mat-color($primary, darker);
+        color: white;
+    }
+
+}
+
+.active {
+    background-color: mat-color($primary, darker);
+    color: white;
+}
