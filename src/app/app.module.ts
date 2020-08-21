@@ -11,6 +11,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatToolbarModule,
+  MatTooltipModule,
   MatTableModule,
   MatSortModule,
   MatListModule,
@@ -18,6 +19,7 @@ import {
   MatIconModule,
   MatSelectModule,
   MatExpansionModule,
+  MatTooltip,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RegisterComponent } from '@components/register/register.component'
@@ -83,6 +85,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatSortModule,
     MatTableModule,
     MatToolbarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     MatExpansionModule,
   ],
