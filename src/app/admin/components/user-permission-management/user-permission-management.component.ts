@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, } from '@angular/router'
+import { User } from '@models/user'
 
 @Component({
   selector: 'app-user-permission-management',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core'
 })
 export class UserPermissionManagementComponent implements OnInit {
 
-  constructor() { }
+  private users: User[] = []
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.users = data.users
+    })
   }
 
 }

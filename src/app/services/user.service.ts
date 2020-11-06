@@ -76,6 +76,11 @@ export class UserService {
       .pipe(map(res => res.user))
   }
 
+  getUsers(): Observable<User[]> {
+    return this.http.get<{ users: User[] }>(`/users`)
+      .pipe(map(res => res.users))
+  }
+
   isAdmin(): Observable<boolean> {
     return this.competitionService.getAdmins()
       .pipe(map(
