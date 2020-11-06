@@ -19,7 +19,6 @@ import {
   MatIconModule,
   MatSelectModule,
   MatExpansionModule,
-  MatTooltip,
 } from '@angular/material'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RegisterComponent } from '@components/register/register.component'
